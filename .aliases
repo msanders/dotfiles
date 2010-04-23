@@ -1,34 +1,75 @@
-alias cman='man -S2:3' # Restrict man to C sections.
 alias ...='cd ../..'
 alias ..='cd ..'
 alias app='open -a'
 alias c='open -a Calculator'
 alias calc='bc -lq'
-alias d='open -a Dictionary'
+alias chrome='open -a Google\ Chrome --args'
+alias lastchrome='open -a Google\ Chrome --args --restore-last-session'
+alias cman='man -S2:3'
 alias dl='cd ~/Downloads'
 alias dt='cd ~/Desktop'
 alias dutil='open -a Disk\ Utility'
 alias edit='open -a TextEdit'
+alias flow='open -a Concentrate'
 alias gdiff='open -a FileMerge'
 alias gftp='open -a Transmit'
+alias gscript='open -a Script\ Editor'
+alias h='history'
 alias hibdefault='sudo pmset -a hibernatemode 3'
 alias hiboff='sudo pmset -a hibernatemode 0'
 alias hibon='sudo pmset -a hibernatemode 1'
-alias hide='chflags hidden' # Hide file from GUI in OS X.
-alias lock='sudo chflags uchg' # Lock file from GUI in OS X.
+alias hide='chflags hidden' # Hide a file from GUI.
+alias il='open -a Adobe\ Illustrator\ CS3'
+alias keychain='open -a Keychain\ Access'
+alias ll='ls -al'
+alias lock='sudo chflags uchg'
 alias ls='ls -F'
 alias mon='open -a Activity\ Monitor'
+alias mp3='open -a iTunes'
+alias o='osascript -e'
 alias pa='open -a Pages'
 alias pass='open -a 1Password'
 alias plist='open -a Property\ List\ Editor'
+alias prog='~/Documents/Programs'
+alias ps='open -a Adobe\ Photoshop\ CS3'
+alias rdc='open -a Remote\ Desktop\ Connection'
+alias s='open -a Safari'
+alias size='du -sh'
 alias ss='ssh inky@sporkage.com'
 alias targz='tar zxvf'
-alias top='top -d' # Disable memory object map reporting to load top faster.
+alias top='top -d'
 alias unarchive='open -a The\ Unarchiver'
-alias unhide='chflags unhidden' # Unhide file from GUI in OS X.
-alias unlock='sudo chflags nouchg' # Unlock file from GUI in OS X.
+alias unhide='chflags nohidden'
+alias unlock='sudo chflags nouchg'
 alias view='open -a Preview'
+alias vim='vim -n'
 alias xcode='open -a Xcode'
 alias zap='open -a AppZapper'
+
+# -- Functions --
+#
+# Lookup item in OS X dictionary.
+dict() { open "dict://$1" }
+
+# Connect to VNC address.
+vnc() { open "vnc://$1" }
+
+# Remove .DS_Store files.
+rmds() {
+	if [[ $1 == "" ]]; then
+		echo "usage: rmds [directory]";
+	else
+		find $1 -name ".DS_Store" -type f -print -delete;
+	fi
+}
+
+# Quickly lookup entry in Wikipedia.
+wiki() {
+	if [[ $1 == "" ]]; then
+		echo "usage: wiki [term]";
+	else
+		dig +short txt $1.wp.dg.cx;
+	fi
+}
 
 # vim:ft=zsh
