@@ -1,12 +1,13 @@
 #compdef open
+# Provides simple tab-completion for the OS X /usr/bin/open utility.
 
 typeset -A opt_args
 local context state line
 local -a appdirs
-appdirs="(. /Applications /Applications/Utilities /Developer/Applications)"
+appdirs="(. /Applications /Developer/Applications /Applications/Utilities)"
 
 _arguments -s -S \
-	"(-b -e -t -f -R -h)-a+[open app by name]:name:->apps" \
+    "(-b -e -t -f -R -h)-a+[open app by name]:name:->apps" \
 	"(-a -e -t -f -R -h)-b+[open app by bundle identifier]:bundle identifier" \
 	"(-a -b -t -R -h)-e+[open with TextEdit]:file:_files" \
 	"(-a -b -e -R -h)-t+[open with default text editor]:file:_files" \
