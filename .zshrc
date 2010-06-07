@@ -1,10 +1,14 @@
 PATH=$HOME/bin:$PATH
-PS1="%2c$PR_NO_COLOR%(!.#.$) " # Nice, unobtrusive prompt
-fpath=($HOME/.zsh-functions $fpath) # Load my completion functions
+PS1="%2c$PR_NO_COLOR%(!.#.$) " # Nice, unobtrusive prompt.
+fpath=(~/.zsh-functions $fpath) # Load my completion functions.
 export EDITOR=vim # :)
+
+# Python environment variables
+export PYTHONSTARTUP=$HOME/.pyrc
 
 # -- Intelligent completion --
 autoload -Uz compinit; compinit
+zstyle ':completion:*' file-patterns '%p:globbed-files:'
 zstyle ':completion:*' completer _expand _complete _ignored
 zstyle ':completion:*' expand prefix suffix
 zstyle ':completion:*' file-sort name
@@ -26,7 +30,6 @@ unsetopt EXTENDED_GLOB # Do not treat #, ^ and ~ as parts of patterns.
 # process to the title.
 if [[ ${TERM} == screen ]]; then
 	precmd() { print -Pn "\033k\033\134\033k\033\134" }
-	PATH=$HOME/bin:$PATH
 fi
 
 # -- Colors! --
@@ -65,6 +68,8 @@ bindkey "" kill-line
 
 bindkey '^[[Z' reverse-menu-complete # Shift-tab to go back an item in menu.
 bindkey " " magic-space # Expand variables such as !$ when space is pressed.
+
+alias -s -- jar='java -jar' # Automatically open .jar files with Java.
 
 # Search history using  & .
 bindkey "" history-beginning-search-backward
