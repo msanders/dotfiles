@@ -24,6 +24,7 @@ alias hide='chflags hidden' # Hide a file from GUI in OS X.
 alias ip='curl -s "http://whatismyip.org" -w "\n"'
 alias keychain='open -a Keychain\ Access'
 alias lock='sudo chflags uchg' # Lock file from modification in OS X.
+alias lockmac='/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend'
 alias ls='ls -F'
 alias mon='open -a Activity\ Monitor'
 alias mp3='open -a iTunes'
