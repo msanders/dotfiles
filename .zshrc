@@ -33,15 +33,15 @@ if [[ ${TERM} == screen ]]; then
 fi
 
 # -- Colors! --
-CLICOLOR=1
-LANG=C # Make grep faster
-GREP_OPTIONS='--color=auto'
-LSCOLORS=cxfxexexexegedabagcxcx
+export CLICOLOR=1
+export LANG=C # Make grep faster (it's slow for utf-8)
+export GREP_OPTIONS='--color=auto'
+export LSCOLORS=cxfxexexexegedabagcxcx
 
 # -- History --
-HISTFILE=$HOME/.zsh_history
-HISTSIZE=1000 # Lines to save in memory
-SAVEHIST=2000 # Lines to save on disk
+export HISTFILE=$HOME/.zsh_history
+export HISTSIZE=10000 # Lines to save in memory
+export SAVEHIST=10000 # Lines to save on disk
 
 # Append to history on-the-fly (not just on exit).
 setopt APPENDHISTORY INC_APPEND_HISTORY
