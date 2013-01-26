@@ -197,6 +197,19 @@ endfunction
 xnoremap * :<c-u>call<SID>VisualSearch()<cr>/<cr>
 xnoremap # :<c-u>call<SID>VisualSearch()<cr>?<cr>
 
+" Shortcut for appending a semicolon at the end of a line.
+function s:AppendSemicolon()
+	if pumvisible()
+		call feedkeys("\<esc>a", 'n')
+		call feedkeys(';;')
+	elseif getline('.') !~ ';$'
+		call setline('.', getline('.').';')
+	endif
+	return ''
+endfunction
+
+autocmd FileType c,objc,cpp,perl inoremap <buffer> <silent> ;; <c-r>=<SID>AppendSemicolon()<cr>
+
 " Sane navigation in command mode
 noremap! <c-a> <home>
 noremap! <c-e> <end>
