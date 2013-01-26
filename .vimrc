@@ -68,8 +68,8 @@ if has('gui_running')
 			return "
 		endfunction
 
-		inoremap <D-T> <c-r>=<SID>Peep()<cr>
-		nnoremap <D-T> :PeepOpen<cr>
+		inoremap <d-t> <c-r>=<SID>Peep()<cr>
+		nnoremap <d-t> :PeepOpen<cr>
 	endif
 endif
 
