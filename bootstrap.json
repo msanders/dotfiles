@@ -1,7 +1,8 @@
 {
     "after-scripts": [
         "brew linkapps",
-        "./scripts/update_ruby.sh"
+        "./scripts/update_ruby.sh",
+        "\"./scripts/Terminal Launcher/install.sh\""
     ],
     "casks": [
         "adobe-creative-cloud",
