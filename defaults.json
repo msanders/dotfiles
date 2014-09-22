@@ -15,12 +15,16 @@
     }, 
     "com.apple.dock": {
         "expose-animation-duration": 0.15, 
+        "orientation": "left", 
         "show-process-indicators": false, 
         "tilesize": 48
     }, 
     "com.apple.finder": {
         "FXDefaultSearchScope": "SCcf", 
         "QuitMenuItem": true
+    }, 
+    "com.flexibits.fantastical.plist": {
+        "StatusItemStyle": 0
     }, 
     "com.iconfactor.mac.xScope": {
         "generalShowDockIcon": false
