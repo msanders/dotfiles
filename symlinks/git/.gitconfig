@@ -1,0 +1,7 @@
+[user]
+	name = Michael Sanders
+	email = michael@msanders.com
+[core]
+    editor = vim
+[alias]
+    up = "!git remote update -p; git merge --ff-only @{u}"
