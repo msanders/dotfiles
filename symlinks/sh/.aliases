@@ -1,0 +1,15 @@
+# vim:ft=sh
+
+alias battery="pmset -g ps"
+alias cdsrc='cd ~/Documents/src'
+alias cman="man -S2:3"
+alias hide="chflags hidden"
+alias lock="sudo chflags uchg"
+alias sizeof="du -sh"
+alias suspend="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
+alias targz="tar zxvf"
+alias tmp="cd ~/.tmp"
+alias unhide="chflags nohidden"
+alias unlock="sudo chflags nouchg"
+alias update="sh -c 'softwareupdate -i -a && brew update && brew upgrade && diskutil repairPermissions /'"
+alias whatismyip='curl -s "http://whatismyip.org" -w "\n"'

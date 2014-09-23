@@ -1,0 +1,32 @@
+{
+    "NSGlobalDomain": {
+        "ApplePressAndHoldEnabled": false, 
+        "InitialKeyRepeat": 4, 
+        "KeyRepeat": 2
+    }, 
+    "com.apple.Safari": {
+        "FindOnPageMatchesWordStartsOnly": false
+    }, 
+    "com.apple.dashboard": {
+        "mcx-disabled": true
+    }, 
+    "com.apple.desktopservices": {
+        "DSDontWriteNetworkStores": true
+    }, 
+    "com.apple.dock": {
+        "expose-animation-duration": 0.15, 
+        "orientation": "left", 
+        "show-process-indicators": false, 
+        "tilesize": 48
+    }, 
+    "com.apple.finder": {
+        "FXDefaultSearchScope": "SCcf", 
+        "QuitMenuItem": true
+    }, 
+    "com.flexibits.fantastical.plist": {
+        "StatusItemStyle": 0
+    }, 
+    "com.iconfactor.mac.xScope": {
+        "generalShowDockIcon": false
+    }
+}
