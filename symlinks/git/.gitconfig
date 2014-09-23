@@ -14,3 +14,5 @@
 	default = tracking
 [merge]
 	stat = true
+[credential]
+	helper = osxkeychain

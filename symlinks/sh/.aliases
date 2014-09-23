@@ -1,6 +1,7 @@
 # vim:ft=sh
 
 alias battery="pmset -g ps"
+alias cdsrc='cd ~/Documents/src'
 alias cman="man -S2:3"
 alias hide="chflags hidden"
 alias lock="sudo chflags uchg"
