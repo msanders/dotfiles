@@ -4,6 +4,9 @@
         "./scripts/update_ruby.sh",
         "\"./scripts/Terminal Launcher/install.sh\""
     ],
+    "before-scripts": [
+        "brew cask install xquartz"
+    ],
     "casks": [
         "adobe-creative-cloud",
         "charles",
