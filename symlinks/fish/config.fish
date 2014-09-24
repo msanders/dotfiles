@@ -33,4 +33,6 @@ set fish_color_cwd green
 
 # rbenv support
 set -gx RBENV_ROOT /usr/local/var/rbenv
-. (rbenv init -|psub)
+if which rbenv > /dev/null
+    . (rbenv init -|psub)
+end

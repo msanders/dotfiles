@@ -1,0 +1,3 @@
+imap jj <Esc>
+nmap ; :
+nmap <silent> <c-o> :put_<cr>k
