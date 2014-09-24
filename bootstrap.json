@@ -1,6 +1,7 @@
 {
     "after-scripts": [
         "brew linkapps",
+        "vim +PluginInstall +qall",
         "./scripts/update_ruby.sh",
         "\"./scripts/Terminal Launcher/install.sh\""
     ],
@@ -103,7 +104,7 @@
         "sh/.aliases": "~",
         "sh/.hushlogin": "~",
         "sh/.inputrc": "~",
-        "vim/.vimrc": "~",
+        "vim/.*": "~",
         "zsh/.zsh-functions/*": "~/.zsh-functions/",
         "zsh/.zshrc": "~"
     },
