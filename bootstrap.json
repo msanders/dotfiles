@@ -103,7 +103,7 @@
         "fish/*.fish": "~/.config/fish/",
         "fish/functions/*": "~/.config/fish/functions/",
         "git/.gitconfig": "~",
-        "lib/DefaultKeyBinding.dict": "~/Library/Keybindings/",
+        "lib/DefaultKeyBinding.dict": "~/Library/KeyBindings/",
         "sh/.aliases": "~",
         "sh/.hushlogin": "~",
         "sh/.inputrc": "~",

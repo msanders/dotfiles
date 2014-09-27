@@ -1,65 +1,89 @@
-{
-    /* Keybindings for emacs emulation.  Compiled by Jacob Rus.
-     *
-     * This is a pretty good set, especially considering that many emacs bindings
-     * such as C-o, C-a, C-e, C-k, C-y, C-v, C-f, C-b, C-p, C-n, C-t, and
-     * perhaps a few more, are already built into the system.
-     *
-     * BEWARE:
-     * This file uses the Option key as a meta key.  This has the side-effect
-     * of overriding Mac OS keybindings for the option key, which generally
-     * make common symbols and non-english letters.
-     */
-        
-    /* Ctrl shortcuts */
-    "^l"        = "centerSelectionInVisibleArea:";  /* C-l          Recenter */
-    "^/"        = "undo:";                          /* C-/          Undo */
-    "^_"        = "undo:";                          /* C-_          Undo */
-    "^ "        = "setMark:";                       /* C-Spc        Set mark */
-    "^\@"       = "setMark:";                       /* C-@          Set mark */
-	"^w" = "deleteWordBackward:"; 
-	"^W" = "deleteWordForward:";
-	"^i" = "insertTab:"; 
-	"^g" = "moveToBeginningOfDocument:";
-	"^G" = "moveToEndOfDocument:";
-	"^u" = "deleteToBeginningOfLine:";
-
-
-    /* Meta shortcuts */
-    "~f"        = "moveWordForward:";               /* M-f          Move forward word */
-    "~b"        = "moveWordBackward:";              /* M-b          Move backward word */
-    "~<"        = "moveToBeginningOfDocument:";     /* M-<          Move to beginning of document */
-    "~>"        = "moveToEndOfDocument:";           /* M->          Move to end of document */
-    "~v"        = "pageUp:";                        /* M-v          Page Up */
-    "~/"        = "complete:";                      /* M-/          Complete */
-    "~c"        = ( "capitalizeWord:",              /* M-c          Capitalize */
-                    "moveForward:",
-                    "moveForward:");                                
-    "~u"        = ( "uppercaseWord:",               /* M-u          Uppercase */
-                    "moveForward:",
-                    "moveForward:");
-    "~l"        = ( "lowercaseWord:",               /* M-l          Lowercase */
-                    "moveForward:",
-                    "moveForward:");
-    "~d"        = "deleteWordForward:";             /* M-d          Delete word forward */
-    "^~h"       = "deleteWordBackward:";            /* M-C-h        Delete word backward */
-    "~\U007F"   = "deleteWordBackward:";            /* M-Bksp       Delete word backward */
-    "~t"        = "transposeWords:";                /* M-t          Transpose words */
-    "~\@"       = ( "setMark:",                     /* M-@          Mark word */
-                    "moveWordForward:",
-                    "swapWithMark");
-    "~h"        = ( "setMark:",                     /* M-h          Mark paragraph */
-                    "moveToEndOfParagraph:",
-                    "swapWithMark");
-
-    /* C-x shortcuts */
-    "^x" = {
-        "u"     = "undo:";                          /* C-x u        Undo */
-        "k"     = "performClose:";                  /* C-x k        Close */
-        "^f"    = "openDocument:";                  /* C-x C-f      Open (find file) */
-        "^x"    = "swapWithMark:";                  /* C-x C-x      Swap with mark */
-        "^m"    = "selectToMark:";                  /* C-x C-m      Select to mark*/
-        "^s"    = "saveDocument:";                  /* C-x C-s      Save */
-        "^w"    = "saveDocumentAs:";                /* C-x C-w      Save as */
-    };
-}
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>^ </key>
+	<string>setMark:</string>
+	<key>^/</key>
+	<string>undo:</string>
+	<key>^@</key>
+	<string>setMark:</string>
+	<key>^G</key>
+	<string>moveToEndOfDocument:</string>
+	<key>^W</key>
+	<string>deleteWordForward:</string>
+	<key>^g</key>
+	<string>moveToBeginningOfDocument:</string>
+	<key>^i</key>
+	<string>insertTab:</string>
+	<key>^l</key>
+	<string>centerSelectionInVisibleArea:</string>
+	<key>^u</key>
+	<string>deleteToBeginningOfLine:</string>
+	<key>^w</key>
+	<string>deleteWordBackward:</string>
+	<key>^x</key>
+	<dict>
+		<key>^f</key>
+		<string>openDocument:</string>
+		<key>^m</key>
+		<string>selectToMark:</string>
+		<key>^s</key>
+		<string>saveDocument:</string>
+		<key>^w</key>
+		<string>saveDocumentAs:</string>
+		<key>^x</key>
+		<string>swapWithMark:</string>
+		<key>k</key>
+		<string>performClose:</string>
+		<key>u</key>
+		<string>undo:</string>
+	</dict>
+	<key>~/</key>
+	<string>complete:</string>
+	<key>~&lt;</key>
+	<string>moveToBeginningOfDocument:</string>
+	<key>~@</key>
+	<array>
+		<string>setMark:</string>
+		<string>moveWordForward:</string>
+		<string>swapWithMark</string>
+	</array>
+	<key>~b</key>
+	<string>moveWordBackward:</string>
+	<key>~c</key>
+	<array>
+		<string>capitalizeWord:</string>
+		<string>moveForward:</string>
+		<string>moveForward:</string>
+	</array>
+	<key>~d</key>
+	<string>deleteWordForward:</string>
+	<key>~f</key>
+	<string>moveWordForward:</string>
+	<key>~h</key>
+	<array>
+		<string>setMark:</string>
+		<string>moveToEndOfParagraph:</string>
+		<string>swapWithMark</string>
+	</array>
+	<key>~l</key>
+	<array>
+		<string>lowercaseWord:</string>
+		<string>moveForward:</string>
+		<string>moveForward:</string>
+	</array>
+	<key>~t</key>
+	<string>transposeWords:</string>
+	<key>~u</key>
+	<array>
+		<string>uppercaseWord:</string>
+		<string>moveForward:</string>
+		<string>moveForward:</string>
+	</array>
+	<key>~v</key>
+	<string>pageUp:</string>
+	<key>~</key>
+	<string>deleteWordBackward:</string>
+</dict>
+</plist>
