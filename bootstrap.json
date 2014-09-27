@@ -10,6 +10,7 @@
     ],
     "casks": [
         "adobe-creative-cloud",
+        "bittorrent-sync",
         "charles",
         "chatology",
         "colorpicker",
@@ -29,6 +30,7 @@
         "imagealpha",
         "imageoptim",
         "iterm2",
+        "kaleidoscope",
         "keyboard-cleaner",
         "lingon-x",
         "litecoin",
@@ -55,6 +57,7 @@
         "xquartz"
     ],
     "formulas": [
+        "bash",
         "brew-cask",
         "chromedriver",
         "cowsay",

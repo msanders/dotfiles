@@ -100,3 +100,6 @@ zle -N zle-keymap-select
 # Rbenv
 export RBENV_ROOT=/usr/local/var/rbenv
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+
+# added by travis gem
+[ -f /Users/mks/.travis/travis.sh ] && source /Users/mks/.travis/travis.sh

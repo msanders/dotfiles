@@ -1,3 +1,48 @@
-imap jj <Esc>
-nmap ; :
-nmap <silent> <c-o> :put_<cr>k
+" XVim-only
+nnoremap ,A :xcmenucmd Jump to Next Counterpart<cr>
+nnoremap ,v :xcmenucmd Open in Assistant Editor<cr>
+nnoremap ,w :w<cr>
+nnoremap <c-l> :xcmenucmd Jump to Definition<cr>
+
+" Macros
+cnoremap jj <c-c>
+inoremap jj <esc>
+noremap ; :
+noremap \ ;
+nnoremap <silent> <c-o> :put_<cr>k
+
+" Make Y to y as D is to d and C is to c
+nnoremap Y y$
+
+" Sane navigation in command mode
+noremap! <c-a> <home>
+noremap! <c-e> <end>
+cnoremap <c-h> <left>
+cnoremap <c-l> <right>
+cnoremap <c-b> <s-left>
+cnoremap <c-f> <s-right>
+cnoremap <c-w> <m-bs>
+
+" ... insert mode
+inoremap <silent> <c-b> <c-o>b
+inoremap <silent> <c-f> <esc>ea
+inoremap <c-h> <left>
+inoremap <c-l> <right>
+inoremap <c-k> <c-o>D
+inoremap <expr> <up> pumvisible() ? '<c-p>' : '<c-o>k'
+inoremap <expr> <down> pumvisible() ? '<c-n>' : '<c-o>j'
+
+" ... and visual mode
+xnoremap m $h
+xnoremap v <esc>
+
+" Search
+set gdefault
+set hlsearch
+set ignorecase
+set smartcase
+set wrapscan
+
+" Use system clipboard
+set clipboard=unnamed
+set guioptions=a

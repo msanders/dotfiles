@@ -11,6 +11,7 @@ set --export NODE_PATH "/usr/local/lib/node_modules"
 set --export PATH "$HOME/bin" "/usr/local/bin" "/usr/local/sbin" "/usr/local/share/npm/bin" $PATH
 set --export SAVEHIST 10000
 set --export fish_greeting
+set --export GITHUB_USERNAME msanders
 set __fish_git_prompt_show_informative_status 'yes'
 
 if test -f $HOME/.aliases
@@ -35,4 +36,10 @@ set fish_color_cwd green
 set -gx RBENV_ROOT /usr/local/var/rbenv
 if which rbenv > /dev/null
     . (rbenv init -|psub)
+end
+
+# Add GHC 7.8.3 to the PATH, via http://ghcformacosx.github.io/
+set --export GHC_DOT_APP "/opt/homebrew-cask/Caskroom/ghc/7.8.3-r1/ghc-7.8.3.app"
+if test -d "$GHC_DOT_APP"
+    set --export PATH "$HOME/.cabal/bin" "$GHC_DOT_APP/Contents/bin" $PATH
 end

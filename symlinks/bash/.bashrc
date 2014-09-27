@@ -10,9 +10,6 @@ export PATH="$HOME/.cabal/bin:$PATH"
 export PATH="/usr/local/bin:$PATH"
 export PATH="/usr/local/sbin:$PATH"
 
-# Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
-
 # Go
 export GOPATH="$HOME/go"
 export PATH="$GOPATH/bin:$PATH"
@@ -44,3 +41,15 @@ shopt -s histappend
 # Rbenv
 export RBENV_ROOT=/usr/local/var/rbenv
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
+
+# Add GHC 7.8.3 to the PATH, via http://ghcformacosx.github.io/
+export GHC_DOT_APP="/opt/homebrew-cask/Caskroom/ghc/7.8.3-r1/ghc-7.8.3.app"
+if [ -d "$GHC_DOT_APP" ]; then
+    export PATH="${HOME}/.cabal/bin:${GHC_DOT_APP}/Contents/bin:${PATH}"
+fi
+
+# added by travis gem
+[ -f /Users/mks/.travis/travis.sh ] && source /Users/mks/.travis/travis.sh
