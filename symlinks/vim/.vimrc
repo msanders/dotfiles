@@ -55,12 +55,17 @@ set shortmess=atI
 set showcmd
 set titlestring=%f title
 
+" iTerm weirdness (https://stackoverflow.com/a/2105981)
+set t_ts=]1;
+set t_fs=
+
 " Editing
 set backspace=2
 set nofoldenable
 set pastetoggle=<f2>
 set shiftwidth=4
 set tabstop=4
+set mouse=a
 
 " Search
 set gdefault
@@ -82,8 +87,7 @@ if has('mac')
         let @" = old
     endfunction
 
-    vnoremap <silent> "+y :<c-u>call<SID>PBCopy()<cr>
-    vmap "+Y "+y
+    vnoremap <silent> Y :<c-u>call<SID>PBCopy()<cr>
 endif
 
 " GUI options
@@ -283,13 +287,14 @@ autocmd BufRead,BufNewFile *.md set filetype=markdown
 autocmd FileType coffee setlocal indentexpr=indent
 autocmd FileType haskell setlocal makeprg=ghci\ \"%:p\"
 autocmd FileType help nnoremap <buffer> q <c-w>q
-autocmd FileType html,vim setlocal softtabstop=4
 autocmd FileType html setlocal nowrap
+autocmd FileType html,vim,swift,objc setlocal softtabstop=4
 autocmd FileType objc setlocal textwidth=100 colorcolumn=80 nowrap
 autocmd FileType objc,python,scheme,haskell,ruby,typescript,coffee,vim,html setlocal expandtab
 autocmd FileType python setlocal makeprg=python\ -t\ \"%:p\"
-autocmd FileType python,javascript,typescript,coffee setlocal textwidth=80 colorcolumn=80 wrap
+autocmd FileType python,javascript,typescript,coffee,swift setlocal textwidth=80 colorcolumn=80 wrap
 autocmd FileType ruby setlocal tabstop=2 shiftwidth=2
+autocmd FileType swift setlocal makeprg=xcrun\ swift\ -i\ %
 autocmd FileType typescript,coffee,javascript setlocal cursorcolumn
 autocmd FileType typescript,coffee,javascript,css setlocal softtabstop=2 nowrap
 autocmd FileType typescript,javascript setlocal indentexpr=cindent textwidth=110

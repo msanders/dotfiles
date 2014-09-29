@@ -3,13 +3,30 @@ nnoremap ,A :xcmenucmd Jump to Next Counterpart<cr>
 nnoremap ,v :xcmenucmd Open in Assistant Editor<cr>
 nnoremap ,w :w<cr>
 nnoremap <c-l> :xcmenucmd Jump to Definition<cr>
+nnoremap <home> gg
+nnoremap <end> G
+inoremap <c-p> <up>
+inoremap <c-n> <down>
+inoremap <c-a> <esc>^i
+inoremap <c-e> <esc>A
+
+" Workarounds for lack-of :put
+nnoremap <c-o> moA<cr><esc>`o
+
+" Workaround for lack of gj/gk
+nnoremap j a<down><esc>
+nnoremap k a<up><esc>
+
+" Workaround for lack of ' mark
+inoremap <esc> <esc>m'
+
+nnoremap <c-n> :nohlsearch<cr>
 
 " Macros
 cnoremap jj <c-c>
 inoremap jj <esc>
 noremap ; :
 noremap \ ;
-nnoremap <silent> <c-o> :put_<cr>k
 
 " Make Y to y as D is to d and C is to c
 nnoremap Y y$
