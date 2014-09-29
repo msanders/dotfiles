@@ -12,6 +12,5 @@ alias targz="tar zxvf"
 alias tmp="cd ~/.tmp"
 alias unhide="chflags nohidden"
 alias unlock="sudo chflags nouchg"
-alias update="sh -c 'softwareupdate -i -a && brew update && brew upgrade && diskutil repairPermissions /'"
 alias whatismyip='curl -s "http://whatismyip.org" -w "\n"'
 alias vim='gvim -v'

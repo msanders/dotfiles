@@ -4,15 +4,26 @@
 [core]
     editor = vim
 	whitespace = trailing-space,space-before-tab
+	excludesfile = ~/.gitignore
 [alias]
     up = "!git remote update -p; git merge --ff-only @{u}"
 [mergetool]
 	keepBackup = false
+	prompt = false
 [diff]
 	mnemonicprefix = true
+	tool = Kaleidoscope
 [push]
 	default = tracking
 [merge]
 	stat = true
+	tool = Kaleidoscope
 [credential]
 	helper = osxkeychain
+[mergetool "Kaleidoscope"]
+	cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
+	trustexitcode = true
+[difftool "Kaleidoscope"]
+	cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
+[difftool]
+	prompt = false

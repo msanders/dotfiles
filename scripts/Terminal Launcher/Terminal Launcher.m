@@ -5,7 +5,7 @@
 #include <AppKit/AppKit.h>
 #include <ApplicationServices/ApplicationServices.h>
 
-static NSString * const kAppName = @"iTerm";
+static NSString * const kAppName = @"Terminal";
 static LSApplicationParameters AppParams = {0, kLSLaunchDefaults, NULL};
 
 OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef event, void *info)
