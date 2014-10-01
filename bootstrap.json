@@ -99,6 +99,9 @@
         "yuicompressor",
         "zopfli"
     ],
+    "icons": {
+        "MacVim": "http://lab.colepeters.com/cole/tcpvimicon/raw/master/MacVim.icns"
+    },
     "symlinks": {
         "bash/.*": "~",
         "bin/*": "~/bin/",
