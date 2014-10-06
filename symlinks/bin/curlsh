@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# From http://www.djm.org.uk/protect-yourself-from-non-obvious-dangers-curl-url-pipe-sh/
+set -eu
+
+file=$(mktemp -t curlsh)
+curl -sS "$1" > "$file"
+$EDITOR "$file"
+sh "$file";
+rm "$file";
