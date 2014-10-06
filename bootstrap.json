@@ -1,9 +1,10 @@
 {
     "after-scripts": [
-        "brew linkapps",
-        "vim +PluginInstall +qall",
         "./scripts/update_ruby.sh",
-        "./scripts/Terminal\\ Launcher/install.sh"
+        "./scripts/Terminal\\ Launcher/install.sh",
+        "cd ./scripts/swift && ./install",
+        "brew linkapps",
+        "vim +PluginInstall +qall"
     ],
     "casks": [
         "adobe-creative-cloud",
