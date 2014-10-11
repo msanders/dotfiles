@@ -45,8 +45,8 @@ public enum Result<T> {
     }
 
     func combine<U>(b: Result<U>) -> Result<(T, U)> {
-        return self.flatMap { 
-            a in b.map { (a, $0) } 
+        return self.flatMap {
+            a in b.map { (a, $0) }
         }
     }
 
@@ -102,5 +102,32 @@ extension String {
 
     func collapseUser() -> String {
         return self.stringByAbbreviatingWithTildeInPath
+    }
+
+    func replace(
+        pattern: String,
+        _ replacement: String,
+        options: NSStringCompareOptions = nil
+    ) -> String {
+        let str: NSString = self
+        return str.stringByReplacingOccurrencesOfString(
+            pattern,
+            withString: replacement,
+            options: options,
+            range: NSRange(location: 0, length: self.utf16Count)
+        )
+    }
+
+    // Adopted from Python's pipe.escape().
+    func shellescape() -> String {
+        // An empty argument will be skipped, so return empty quotes.
+        if countElements(self) == 0 {
+            return "''"
+        }
+
+        // Use single quotes, and put single quotes into double quotes.
+        // So the string $'b is then quoted as '$'"'"'b'.
+        let replaced = self.replace("'", "'\"'\"'")
+        return "'\(replaced)'"
     }
 }
