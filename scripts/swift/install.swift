@@ -60,7 +60,7 @@ func main() {
                             delimeter +
                             modules[modules.count - 1]
             let suffix = modules.count == 1 ? "" : "s"
-            println("Compiled \(formatted) module\(suffix)")
+            println("Installed \(formatted) module\(suffix)")
         case let .Error(error):
             Shell.fail("Error: \(error.localizedDescription)")
     }
