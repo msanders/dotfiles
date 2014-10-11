@@ -13,4 +13,6 @@ mkdir -p "$AGENT_DIR"
 
 clang "$DIRNAME/Terminal Launcher.m" -o "$SUPPORT_DIR/Terminal Launcher" -Os -Wall -framework Carbon -framework ApplicationServices -framework AppKit
 sed -e "s/\${USER}/$USER/" "$DIRNAME/com.msanders.TerminalLauncher.plist.template" > "$PLIST_OUTFILE"
+
+launchctl unload "$PLIST_OUTFILE"
 launchctl load "$PLIST_OUTFILE"
