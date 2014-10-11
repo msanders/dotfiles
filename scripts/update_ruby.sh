@@ -9,6 +9,6 @@ else
 	exit 1
 fi
 
-rbenv install 2.1.1 --skip-existing
-rbenv global 2.1.1
+rbenv install 2.1.2 --skip-existing
+rbenv global 2.1.2
 gem update --system
