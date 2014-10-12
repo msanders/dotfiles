@@ -1,6 +1,7 @@
 {
     "after-scripts": [
         "./scripts/update_ruby.sh",
+        "./scripts/keybindings/install.sh",
         "./scripts/Terminal\\ Launcher/install.sh",
         "cd ./scripts/swift && ./install",
         "brew linkapps",
@@ -109,7 +110,6 @@
         "fish/*.fish": "~/.config/fish/",
         "fish/functions/*": "~/.config/fish/functions/",
         "git/.*": "~",
-        "lib/DefaultKeyBinding.dict": "~/Library/KeyBindings/",
         "sh/.*": "~",
         "vim/.*": "~",
         "xvim/.*": "~",
