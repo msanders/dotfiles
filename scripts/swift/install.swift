@@ -1,14 +1,5 @@
 import Darwin
 
-func makeOutDir() -> Result<String> {
-    let outDir = "~/bin".expandUser()
-    if let err = Script.makeDirs(outDir) {
-        return .Error(err)
-    } else {
-        return .Success(outDir)
-    }
-}
-
 func findModules(dir: String) -> Result<[String]> {
     let excludedDirs = ["lib"]
     let fm = NSFileManager.defaultManager()
@@ -16,23 +7,20 @@ func findModules(dir: String) -> Result<[String]> {
     return Result(
         fm.contentsOfDirectoryAtPath(dir, error:&error) as [String]?,
         error
-    ) <^> { paths in paths.filter {
+    ) . map { paths in paths.filter {
         path in Script.isDir(path) && !contains(excludedDirs, path)
     } }
 }
 
 func compileModule(module: String, outDir: String) -> Result<String> {
-    let dirname = Script.dirname().collapseUser()
+    let dirname = Script.dirname.collapseUser
     let outPath = outDir.joinPath(module)
     let imports = "\(dirname)/lib/lib.swift " +
                   "\(dirname)/lib/lib.*.swift " + 
                   "\(dirname)/\(module)/*.swift"
     let options = "-O -module-name \(module) -o \(outPath)"
     let cmd = "xcrun swiftc \(imports) \(options)"
-    let status = Shell.system(cmd, glob: true)
-    return status == 0 ? Result.Success(outPath) : Result.Error(
-        Script.error("`\(cmd)` failed with code \(status)")
-    )
+	return Shell.system(cmd, glob: true) . map { _ in outPath }
 }
 
 func compileModules(modules: [String], outDir: String) -> Result<[String]> {
@@ -50,9 +38,8 @@ func compileModules(modules: [String], outDir: String) -> Result<[String]> {
 }
 
 func main() {
-    switch findModules(Script.dirname()).combine(
-        makeOutDir()
-    ) >>- compileModules {
+	let outdir = Script.makeDirs("~/bin".expandUser)
+    switch findModules(Script.dirname).zip(outdir) >>- compileModules {
         case let .Success(results):
             let modules = results().map { $0.lastPathComponent }
             let delimeter = modules.count > 1 ? "& " : ""

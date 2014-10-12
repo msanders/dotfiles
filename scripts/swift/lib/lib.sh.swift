@@ -1,12 +1,23 @@
 import Darwin
 
-struct Script {
+public class StandardErrorOutputStream: OutputStreamType {
+    public func write(string: String) {
+        let stream = NSFileHandle.fileHandleWithStandardError()
+        if let data = string.dataUsingEncoding(NSUTF8StringEncoding) {
+            stream.writeData(data)
+        }
+    }
+}
+
+public var stderr = StandardErrorOutputStream()
+
+public struct Script {
     static var ErrorDomain = "com.msanders.lib.sh.errordomain"
 
-    static func dirname() -> String {
+    static var dirname: String {
         let fm = NSFileManager.defaultManager()
         let arg0 = Process.arguments[0]
-        return fm.currentDirectoryPath.joinPath(arg0).normPath().dirname()
+        return fm.currentDirectoryPath.joinPath(arg0).normPath.dirname
     }
 
     static func isDir(path: String) -> Bool {
@@ -15,13 +26,14 @@ struct Script {
         return fm.fileExistsAtPath(path, isDirectory:&isDir) && isDir
     }
 
-    static func makeDirs(path: String) -> NSError? {
+    static func makeDirs(path: String) -> Result<String> {
         let fm = NSFileManager.defaultManager()
         var error: NSError?
-        return fm.createDirectoryAtPath(path,
-                                        withIntermediateDirectories:true,
-                                        attributes:nil,
-                                        error:&error) ? nil : error
+        let success = fm.createDirectoryAtPath(path,
+                                               withIntermediateDirectories:true,
+                                               attributes:nil,
+                                               error:&error)
+		return Result(success ? path : nil, error)
     }
 
     static func error(msg: String, code: Int = 1) -> NSError {
@@ -31,17 +43,25 @@ struct Script {
     }
 }
 
-struct Shell {
-    static func subprocess(components: [String]) -> Int {
+public struct Shell {
+    static func subprocess(components: [String]) -> Result<String> {
         let task = NSTask()
+        let outPipe = NSPipe()
         task.launchPath = "/usr/bin/env"
         task.arguments = components
+        task.standardOutput = outPipe
         task.launch()
         task.waitUntilExit()
-        return Int(task.terminationStatus)
+        let data = outPipe.fileHandleForReading.readDataToEndOfFile()
+        let output = NSString(data:data, encoding:NSUTF8StringEncoding) ?? ""
+        let code = Int(task.terminationStatus)
+		let cmd = join(" ", components)
+		return code == 0 ? Result.Success(output) : Result.Error(
+			Script.error("`\(cmd)` failed with code \(code)")
+		)
     }
 
-    static func system(cmd: String, glob: Bool = false) -> Int {
+    static func system(cmd: String, glob: Bool = false) -> Result<String> {
         return subprocess(
             glob ? ["sh", "-c", cmd] : cmd.componentsSeparatedByString(" ")
         )
@@ -50,5 +70,13 @@ struct Shell {
     static func fail(msg: String, code: Int = 1) {
         println(msg, &stderr)
         exit(Int32(code))
+    }
+
+    static func getpass(prompt: String) -> String? {
+        if let pw = String(UTF8String: Darwin.getpass(prompt)) {
+            return countElements(pw) > 0 ? pw : nil
+        }
+
+        return nil
     }
 }

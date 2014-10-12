@@ -1,16 +1,5 @@
 @exported import Foundation
 
-public class StandardErrorOutputStream: OutputStreamType {
-    public func write(string: String) {
-        let stream = NSFileHandle.fileHandleWithStandardError()
-        if let data = string.dataUsingEncoding(NSUTF8StringEncoding) {
-            stream.writeData(data)
-        }
-    }
-}
-
-public var stderr = StandardErrorOutputStream()
-
 public enum Result<T> {
     case Success(@autoclosure() -> T)
     case Error(NSError)
@@ -44,7 +33,7 @@ public enum Result<T> {
         }
     }
 
-    func combine<U>(b: Result<U>) -> Result<(T, U)> {
+    func zip<U>(b: Result<U>) -> Result<(T, U)> {
         return self.flatMap {
             a in b.map { (a, $0) }
         }
@@ -88,22 +77,6 @@ extension String {
         return self.stringByAppendingPathComponent(path)
     }
 
-    func normPath() -> String {
-        return self.stringByStandardizingPath
-    }
-
-    func dirname() -> String {
-        return self.stringByDeletingLastPathComponent
-    }
-
-    func expandUser() -> String {
-        return self.stringByExpandingTildeInPath
-    }
-
-    func collapseUser() -> String {
-        return self.stringByAbbreviatingWithTildeInPath
-    }
-
     func replace(
         pattern: String,
         _ replacement: String,
@@ -118,8 +91,24 @@ extension String {
         )
     }
 
+    var normPath: String {
+        return self.stringByStandardizingPath
+    }
+
+    var dirname: String {
+        return self.stringByDeletingLastPathComponent
+    }
+
+    var expandUser: String {
+        return self.stringByExpandingTildeInPath
+    }
+
+    var collapseUser: String {
+        return self.stringByAbbreviatingWithTildeInPath
+    }
+
     // Adopted from Python's pipe.escape().
-    func shellescape() -> String {
+    var shellescape: String {
         // An empty argument will be skipped, so return empty quotes.
         if countElements(self) == 0 {
             return "''"

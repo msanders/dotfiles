@@ -13,7 +13,7 @@ struct MacVim {
     static func cli(appPath: String, args: [String]) {
         // NSTask doesn't seem to play nicely with vim (e.g. `gvim -v`)
         let launchPath = appPath.joinPath(self.cliPath)
-        let escaped = args.map { $0.shellescape() }
+        let escaped = args.map { arg in arg.shellescape }
         system(launchPath + " " + join(" ", escaped))
     }
 
