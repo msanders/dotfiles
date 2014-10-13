@@ -43,3 +43,9 @@ set --export GHC_DOT_APP "/opt/homebrew-cask/Caskroom/ghc/7.8.3-r1/ghc-7.8.3.app
 if test -d "$GHC_DOT_APP"
     set --export PATH "$HOME/.cabal/bin" "$GHC_DOT_APP/Contents/bin" $PATH
 end
+
+# Add Postgres.app to PATH
+set --export POSTGRES_DOT_APP "/Applications/Postgres.app"
+if test -d "$POSTGRES_DOT_APP"
+    set --export PATH "$POSTGRES_DOT_APP/Contents/Versions/9.3/bin" $PATH
+end

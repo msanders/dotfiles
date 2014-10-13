@@ -53,3 +53,9 @@ fi
 
 # added by travis gem
 [ -f /Users/mks/.travis/travis.sh ] && source /Users/mks/.travis/travis.sh
+
+# Add Postgres.app to PATH
+export POSTGRES_DOT_APP="/Applications/Postgres.app"
+if [ -d "$POSTGRES_DOT_APP" ]; then
+    export PATH=$PATH:"$POSTGRES_DOT_APP/Contents/Versions/9.3/bin"
+fi
