@@ -15,12 +15,21 @@ Plugin 'altercation/vim-colors-solarized'
 Plugin 'fatih/vim-go'
 Plugin 'junegunn/goyo.vim'
 Plugin 'junegunn/limelight.vim'
+Plugin 'kchmck/vim-coffee-script'
 Plugin 'leafgarland/typescript-vim'
+Plugin 'msanders/cocoa.vim'
+Plugin 'msanders/snipMate.vim'
 Plugin 'nsf/gocode', {'rtp': 'vim/'}
+Plugin 'scrooloose/nerdtree'
 Plugin 'topfunky/PeepOpen-EditorSupport'
+Plugin 'tpope/vim-repeat'
+Plugin 'tpope/vim-surround'
 Plugin 'wincent/Command-T'
+Plugin 'xolox/vim-misc'
+Plugin 'xolox/vim-notes'
 
-let g:goyo_width=100
+let g:goyo_width = 100
+let g:notes_directories = ['~/Dropbox/Notes']
 
 call vundle#end()
 filetype plugin indent on
@@ -103,7 +112,11 @@ set t_Co=16
 if !&diff
     syntax on
     set background=dark
-    colorscheme solarized
+    try
+        colorscheme solarized
+    catch
+        colorscheme slate
+    endtry
 endif
 
 " Etc.
@@ -255,6 +268,7 @@ inoremap <expr> <down> pumvisible() ? '<c-n>' : '<c-o>j'
 " ... and visual mode
 xnoremap m g_
 xnoremap v <esc>
+xmap s S
 
 " Goyo.vim callbacks
 
@@ -281,9 +295,12 @@ autocmd User GoyoLeave nested call <SID>GoyoLeave()
 autocmd QuickFixCmdPost [^l]* nested cwindow
 autocmd QuickFixCmdPost l* nested lwindow
 
-autocmd BufRead,BufNewFile *.h set filetype=objc
+augroup ftdetect
+autocmd BufRead,BufNewFile *.h,*.m set filetype=objc
 autocmd BufRead,BufNewFile *.json set filetype=javascript
 autocmd BufRead,BufNewFile *.md set filetype=markdown
+augroup END
+
 autocmd FileType coffee setlocal indentexpr=indent
 autocmd FileType haskell setlocal makeprg=ghci\ \"%:p\"
 autocmd FileType help nnoremap <buffer> q <c-w>q

@@ -2,10 +2,10 @@
     "after-scripts": [
         "./scripts/update_ruby.sh",
         "./scripts/keybindings/install.sh",
-        "./scripts/Terminal\\ Launcher/install.sh",
+        "'./scripts/Terminal Launcher/install.sh'",
         "cd ./scripts/swift && ./install",
-        "brew linkapps",
-        "vim +PluginInstall +qall"
+        "./scripts/vim_setup.sh",
+        "brew linkapps"
     ],
     "casks": [
         "adobe-creative-cloud",
@@ -49,6 +49,7 @@
         "reveal",
         "screenhero",
         "sketch",
+        "spectacle",
         "spotify",
         "steam",
         "sublime-text",
@@ -64,7 +65,7 @@
     },
     "formulas": [
         "bash",
-        "brew-cask",
+        "caskroom/cask/brew-cask",
         "chromedriver",
         "cowsay",
         "dnscrypt-proxy",
@@ -115,8 +116,5 @@
         "xvim/.*": "~",
         "zsh/.zsh-functions/*": "~/.zsh-functions/",
         "zsh/.zshrc": "~"
-    },
-    "taps": [
-        "caskroom/cask"
-    ]
+    }
 }

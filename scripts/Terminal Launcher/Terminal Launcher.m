@@ -29,7 +29,7 @@ int main(void)
         kVK_Space,
         optionKey,
         hotKeyID,
-        GetApplicationEventTarget(),
+        GetEventDispatcherTarget(),
         0,
         &hotKeyRef
     );
