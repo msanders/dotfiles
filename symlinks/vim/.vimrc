@@ -21,7 +21,8 @@ Plugin 'msanders/cocoa.vim'
 Plugin 'msanders/snipMate.vim'
 Plugin 'nsf/gocode', {'rtp': 'vim/'}
 Plugin 'scrooloose/nerdtree'
-Plugin 'topfunky/PeepOpen-EditorSupport'
+Plugin 'shemerey/vim-peepopen'
+Plugin 'airblade/vim-rooter'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-surround'
 Plugin 'wincent/Command-T'
@@ -165,6 +166,9 @@ nnoremap <leader>W <c-w>w
 nnoremap <leader>w :w<cr>
 nnoremap <leader>x :x<cr>
 nnoremap <leader>g :Goyo<cr>
+nnoremap <leader>t :CommandT<cr>
+nnoremap j gj
+nnoremap k gk
 
 " Turn off search highlighting
 nnoremap <silent> <c-n> :nohlsearch<cr>
@@ -247,6 +251,9 @@ endfunction
 
 autocmd FileType c,objc,cpp,perl inoremap <buffer> <silent> ;; <c-r>=<SID>AppendSemicolon()<cr>
 
+" Easily reload rc files
+command! ReloadRC source $MYVIMRC | if len($MYGVIMRC) | source $MYGVIMRC | endif
+
 " Sane navigation in command mode
 noremap! <c-a> <home>
 noremap! <c-e> <end>
@@ -306,8 +313,8 @@ autocmd FileType haskell setlocal makeprg=ghci\ \"%:p\"
 autocmd FileType help nnoremap <buffer> q <c-w>q
 autocmd FileType html setlocal nowrap
 autocmd FileType html,vim,swift,objc setlocal softtabstop=4
-autocmd FileType objc setlocal textwidth=100 colorcolumn=80 nowrap
-autocmd FileType objc,python,scheme,haskell,ruby,typescript,coffee,vim,html setlocal expandtab
+autocmd FileType objc setlocal textwidth=100 colorcolumn=0 nowrap
+autocmd FileType objc,python,scheme,haskell,ruby,typescript,coffee,vim,html,sh setlocal expandtab
 autocmd FileType python setlocal makeprg=python\ -t\ \"%:p\"
 autocmd FileType python,javascript,typescript,coffee,swift setlocal textwidth=80 colorcolumn=80 wrap
 autocmd FileType ruby setlocal tabstop=2 shiftwidth=2

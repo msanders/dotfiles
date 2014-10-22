@@ -9,4 +9,7 @@ if has('mac')
     macmenu File.New\ Tab key=<nop>
     inoremap <d-t> <c-r>=<SID>Peep()<cr>
     nnoremap <d-t> :PeepOpen<cr>
+
+    " Automatically quit PeepOpen when Vim exits.
+    let g:peepopen_quit = 1
 endif
