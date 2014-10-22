@@ -21,4 +21,4 @@ if launchctl list | grep "$DOMAIN" &>/dev/null; then
 fi
 
 launchctl load "$PLIST_OUTFILE"
-echo "Installed $TARGET"
+echo "Installed $TARGET."

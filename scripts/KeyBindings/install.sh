@@ -8,4 +8,4 @@ OUTDIR="$HOME/Library/KeyBindings"
 # See https://apple.stackexchange.com/a/53110
 mkdir -p "$OUTDIR"
 cp -p "$DIRNAME/DefaultKeyBinding.dict" "$OUTDIR"
-echo "Installed Key Bindings"
+echo "Installed Key Bindings."

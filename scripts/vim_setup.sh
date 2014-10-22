@@ -1,10 +1,6 @@
 #!/usr/bin/env bash
 set -eu
-
-puterr() {
-	msg="$1"
-	>&2 echo -e "\e[31mError\e[39m: $msg"
-}
+. "$(dirname "$0")/common.sh"
 
 VIM_DIR="$HOME/.vim"
 if [ ! -d "$VIM_DIR" ]; then
@@ -13,10 +9,15 @@ if [ ! -d "$VIM_DIR" ]; then
 else
 	pushd "$VIM_DIR" >/dev/null
     if ! git rev-parse --git-dir >/dev/null 2>&1; then
-		puterr "Not a git repository: ~/.vim"
+		puterr "Not a git repository: ~/.vim."
 		exit 1
 	fi
 	popd >/dev/null
 fi
 
 vim +PluginInstall +qall
+
+# Compile Command-T C extension
+cd "$HOME/.vim/bundle/command-t/ruby/command-t"
+ruby extconf.rb >/dev/null
+make >/dev/null
