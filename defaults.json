@@ -1,8 +1,6 @@
 {
     "NSGlobalDomain": {
         "ApplePressAndHoldEnabled": false,
-        "InitialKeyRepeat": 4,
-        "KeyRepeat": 2,
         "NSScrollAnimationEnabled": false
     },
     "com.apple.Safari": {
