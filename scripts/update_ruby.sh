@@ -4,10 +4,10 @@ set -eu
 
 export RBENV_ROOT=/usr/local/var/rbenv
 if which rbenv > /dev/null; then
-	eval "$(rbenv init -)";
+    eval "$(rbenv init -)";
 else
-	puterr "rbenv not installed"
-	exit 1
+    puterr "rbenv not installed"
+    exit 1
 fi
 
 echo "Updating Ruby"

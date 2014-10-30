@@ -11,7 +11,9 @@ call vundle#begin()
 
 Plugin 'gmarik/Vundle.vim'
 Plugin 'Keithbsmiley/swift.vim'
+Plugin 'airblade/vim-rooter'
 Plugin 'altercation/vim-colors-solarized'
+Plugin 'dag/vim-fish'
 Plugin 'fatih/vim-go'
 Plugin 'junegunn/goyo.vim'
 Plugin 'junegunn/limelight.vim'
@@ -22,7 +24,6 @@ Plugin 'msanders/snipMate.vim'
 Plugin 'nsf/gocode', {'rtp': 'vim/'}
 Plugin 'scrooloose/nerdtree'
 Plugin 'shemerey/vim-peepopen'
-Plugin 'airblade/vim-rooter'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-surround'
 Plugin 'wincent/Command-T'
@@ -312,7 +313,7 @@ autocmd FileType coffee setlocal indentexpr=indent
 autocmd FileType haskell setlocal makeprg=ghci\ \"%:p\"
 autocmd FileType help nnoremap <buffer> q <c-w>q
 autocmd FileType html setlocal nowrap
-autocmd FileType html,vim,swift,objc setlocal softtabstop=4
+autocmd FileType html,vim,swift,objc,sh,fish setlocal softtabstop=4
 autocmd FileType objc setlocal textwidth=100 colorcolumn=0 nowrap
 autocmd FileType objc,python,scheme,haskell,ruby,typescript,coffee,vim,html,sh setlocal expandtab
 autocmd FileType python setlocal makeprg=python\ -t\ \"%:p\"
