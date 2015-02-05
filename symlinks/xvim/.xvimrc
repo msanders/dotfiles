@@ -14,8 +14,8 @@ inoremap <c-e> <esc>A
 nnoremap <c-o> moA<cr><esc>`o
 
 " Workaround for lack of gj/gk
-nnoremap j a<down><esc>
-nnoremap k a<up><esc>
+"nnoremap j a<down><esc>
+"nnoremap k a<up><esc>
 
 " Workaround for lack of ' mark
 inoremap <esc> <esc>m'
