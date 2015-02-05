@@ -5,6 +5,7 @@
         "'./scripts/Terminal Launcher/install.sh'",
         "cd ./scripts/swift && ./install",
         "./scripts/vim_setup.sh",
+        "./scripts/go_setup.sh",
         "brew linkapps"
     ],
     "casks": [
