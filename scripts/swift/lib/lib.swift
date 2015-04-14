@@ -1,12 +1,17 @@
 @exported import Foundation
 
+public class Box<T> {
+    let unbox: T
+    init(_ value: T) { self.unbox = value }
+}
+
 public enum Result<T> {
-    case Success(@autoclosure() -> T)
+    case Success(Box<T>)
     case Error(NSError)
 
     init(_ value: T?, _ error: NSError?) {
         if let val = value {
-            self = .Success(val)
+            self = .Success(Box(val))
         } else {
             if (error == nil) {
                 assertionFailure("Missing both error and value")
@@ -18,7 +23,7 @@ public enum Result<T> {
     func map<U>(f: T -> U) -> Result<U> {
         switch self {
             case let .Success(value):
-                return .Success(f(value()))
+                return .Success(Box(f(value.unbox)))
             case let .Error(error):
                 return .Error(error)
         }
@@ -27,7 +32,7 @@ public enum Result<T> {
     func flatMap<U>(f: T -> Result<U>) -> Result<U> {
         switch self {
             case let .Success(value):
-                return f(value())
+                return f(value.unbox)
             case let .Error(error):
                 return .Error(error)
         }
@@ -44,13 +49,13 @@ public enum Result<T> {
         for result in results {
             switch result {
                 case let .Success(value):
-                    values.append(value())
+                    values.append(value.unbox)
                 case let .Error(error):
                     return .Error(error)
             }
         }
 
-        return .Success(values)
+        return .Success(Box(values))
     }
 }
 
@@ -87,7 +92,7 @@ extension String {
             pattern,
             withString: replacement,
             options: options,
-            range: NSRange(location: 0, length: self.utf16Count)
+            range: NSRange(location: 0, length: count(self))
         )
     }
 
@@ -110,7 +115,7 @@ extension String {
     // Adopted from Python's pipe.escape().
     var shellescape: String {
         // An empty argument will be skipped, so return empty quotes.
-        if countElements(self) == 0 {
+        if count(self) == 0 {
             return "''"
         }
 

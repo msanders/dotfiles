@@ -56,7 +56,7 @@ public struct Shell {
         let output = NSString(data:data, encoding:NSUTF8StringEncoding) ?? ""
         let code = Int(task.terminationStatus)
 		let cmd = join(" ", components)
-		return code == 0 ? Result.Success(output) : Result.Error(
+		return code == 0 ? Result.Success(Box(output as String)) : Result.Error(
 			Script.error("`\(cmd)` failed with code \(code)")
 		)
     }
@@ -74,7 +74,7 @@ public struct Shell {
 
     static func getpass(prompt: String) -> String? {
         if let pw = String(UTF8String: Darwin.getpass(prompt)) {
-            return countElements(pw) > 0 ? pw : nil
+            return count(pw) > 0 ? pw : nil
         }
 
         return nil

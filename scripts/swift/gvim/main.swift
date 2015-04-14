@@ -24,18 +24,19 @@ struct MacVim {
 
     static func findActive() -> NSRunningApplication? {
         let workspace = NSWorkspace.sharedWorkspace()
-        let runningApps = workspace.runningApplications as [NSRunningApplication]
+        let runningApps = workspace.runningApplications as? [NSRunningApplication] ?? []
         return runningApps.filter({
             app in app.bundleIdentifier == self.bundleID
         }).first
     }
 
     static func windows(pid: Int) -> [[String: AnyObject]] {
-        let windows = CGWindowListCopyWindowInfo(16, 0).takeUnretainedValue() as [[String: AnyObject]]
-        return windows.filter({entry in 
-            let ownerPID = entry[kCGWindowOwnerPID] as? Int
-            let bounds = entry[kCGWindowBounds] as? [String: Float]
-            return ownerPID == pid && bounds != nil && bounds!["Y"] > 22
+        let windows = CGWindowListCopyWindowInfo(16, 0).takeUnretainedValue() as?
+            [[String: AnyObject]] ?? []
+        return windows.filter({entry in
+            let ownerPID = entry[kCGWindowOwnerPID as String] as? Int
+            let bounds = entry[kCGWindowBounds as String] as? [String: Float]
+            return ownerPID == pid && bounds?["Y"] > 22
         })
     }
 
@@ -54,7 +55,7 @@ func main() {
     } else if let appPath = MacVim.installationPath() {
         var args = ["-g"]
         let cliFlags = Process.arguments.filter({ arg in startsWith(arg, "-") })
-    
+
         args += cliFlags.count == 0 && MacVim.activeWithWindows() ? ["--remote"] : []
         args += Process.arguments[1..<Process.arguments.count]
         MacVim.cli(appPath, args: args)

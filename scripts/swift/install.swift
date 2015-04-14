@@ -1,11 +1,12 @@
 import Darwin
+import Foundation.NSError
 
 func findModules(dir: String) -> Result<[String]> {
     let excludedDirs = ["lib"]
     let fm = NSFileManager.defaultManager()
     var error: NSError?
     return Result(
-        fm.contentsOfDirectoryAtPath(dir, error:&error) as [String]?,
+        fm.contentsOfDirectoryAtPath(dir, error:&error) as? [String],
         error
     ) . map { paths in paths.filter {
         path in Script.isDir(path) && !contains(excludedDirs, path)
@@ -28,20 +29,20 @@ func compileModules(modules: [String], outDir: String) -> Result<[String]> {
     for module in modules {
         switch compileModule(module, outDir) {
             case let .Success(value):
-                values.append(value())
+                values.append(value.unbox)
             case let .Error(error):
                 return .Error(error)
         }
     }
 
-    return .Success(values)
+    return .Success(Box(values))
 }
 
 func main() {
 	let outdir = Script.makeDirs("~/bin".expandUser)
     switch findModules(Script.dirname).zip(outdir) >>- compileModules {
         case let .Success(results):
-            let modules = results().map { $0.lastPathComponent }
+            let modules = results.unbox.map { $0.lastPathComponent }
             let delimeter = modules.count > 1 ? "& " : ""
             let formatted = join(", ", modules[0..<modules.count - 1]) +
                             delimeter +
