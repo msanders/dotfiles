@@ -7,27 +7,27 @@
 	excludesfile = ~/.gitignore
 [alias]
     up = "!git remote update -p; git merge --ff-only @{u}"
+[alias]
+    reup = !/usr/local/bin/git-reup
 [mergetool]
 	keepBackup = false
 	prompt = false
-[diff]
-	mnemonicprefix = true
-	tool = Kaleidoscope
 [push]
 	default = tracking
-[merge]
-	stat = true
-	tool = Kaleidoscope
 [credential]
 	helper = osxkeychain
-[mergetool "Kaleidoscope"]
-	cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
-	trustexitcode = true
-[difftool "Kaleidoscope"]
-	cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
-[difftool]
-	prompt = false
 [filter "media"]
 	required = true
 	clean = git media clean %f
 	smudge = git media smudge %f
+[merge]
+	tool = chdiff
+[diff]
+	tool = chdiff
+[difftool]
+	prompt = false
+[difftool "chdiff"]
+    cmd = chdiff "$LOCAL" "$REMOTE"
+	trustExitCode = true
+[mergetool "chdiff"]
+    cmd = chdiff "$LOCAL" "$REMOTE"
