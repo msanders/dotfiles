@@ -31,3 +31,7 @@
 	trustExitCode = true
 [mergetool "chdiff"]
     cmd = chdiff "$LOCAL" "$REMOTE"
+[filter "lfs"]
+	clean = git lfs clean %f
+	smudge = git lfs smudge %f
+	required = true
