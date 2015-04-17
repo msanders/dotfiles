@@ -19,6 +19,10 @@ if test -f $HOME/.aliases
 	. $HOME/.aliases
 end
 
+if test -f $HOME/.secrets
+	. $HOME/.secrets
+end
+
 set fish_color_normal normal
 set fish_color_command ffd700
 set fish_color_quote normal
