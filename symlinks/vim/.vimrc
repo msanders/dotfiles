@@ -2,10 +2,17 @@
 " Author: Michael Sanders
 
 " ============================
-" 1. Plugins
+" Plugins
 " ============================
 set nocompatible
+set encoding=utf-8
 filetype off
+
+" Vim plugins expect a POSIX-compliant shell
+if &shell !~ '/sh$'
+    set shell=/bin/sh
+endif
+
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
@@ -17,11 +24,10 @@ Plugin 'fatih/vim-go'
 Plugin 'gmarik/Vundle.vim'
 Plugin 'junegunn/goyo.vim'
 Plugin 'junegunn/limelight.vim'
-Plugin 'kchmck/vim-coffee-script'
 Plugin 'leafgarland/typescript-vim'
 Plugin 'msanders/cocoa.vim'
 Plugin 'msanders/snipMate.vim'
-Plugin 'nsf/gocode', {'rtp': 'vim/'}
+Plugin 'rking/ag.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'shemerey/vim-peepopen'
 Plugin 'tpope/vim-repeat'
@@ -37,7 +43,7 @@ call vundle#end()
 filetype plugin indent on
 
 " ============================
-" 2. Settings
+" Settings
 " ============================
 
 " Autocompletion
@@ -56,7 +62,6 @@ set nowritebackup
 set noswapfile
 
 " Buffers
-set encoding=utf-8
 set autoread
 set hidden
 
@@ -83,11 +88,6 @@ set gdefault
 set hlsearch
 set ignorecase
 set smartcase
-
-" Default plugins in Vim expect a POSIX-compliant shell
-if &shell !~ '/sh$'
-    set shell=/bin/sh
-endif
 
 " Mac options
 if has('mac')
@@ -128,7 +128,7 @@ if filereadable(secrets_path)
 endif
 
 " ============================
-" 3. Macros
+" Macros
 " ============================
 
 " Typos
@@ -193,9 +193,6 @@ function! s:AlternateFile(...)
     echohl None
 endfunction
 
-autocmd BufRead,BufNewFile *.h nnoremap <buffer> <silent> <leader>A :call<SID>AlternateFile('c', 'm', 'cpp', 'cc')<cr>
-autocmd BufRead,BufNewFile *.{c\|m\|mm\|cpp\|cc} nnoremap <buffer> <silent> <leader>A :call<SID>AlternateFile('h')<cr>
-
 function! s:ToggleLongLineHighlight()
     if !exists('w:overLength')
         let w:overLength = matchadd('ErrorMsg', '.\%>'.(&textwidth + 1).'v', 0)
@@ -250,8 +247,6 @@ function! s:AppendSemicolon()
     return ''
 endfunction
 
-autocmd FileType c,objc,cpp,perl inoremap <buffer> <silent> ;; <c-r>=<SID>AppendSemicolon()<cr>
-
 " Easily reload rc files
 command! ReloadRC source $MYVIMRC | if len($MYGVIMRC) | source $MYGVIMRC | endif
 
@@ -279,7 +274,6 @@ xnoremap v <esc>
 xmap s S
 
 " Goyo.vim callbacks
-
 function! s:GoyoEnter()
     let s:colorcolumn = &colorcolumn
     set colorcolumn=0
@@ -291,23 +285,27 @@ function! s:GoyoLeave()
     endif
 endfunction
 
+" ============================
+" Autocommands
+" ============================
+
+augroup rccommands
+autocmd!
+
+autocmd BufRead,BufNewFile *.h,*.m set filetype=objc
+autocmd BufRead,BufNewFile *.json set filetype=javascript
+autocmd BufRead,BufNewFile *.md set filetype=markdown
+
+autocmd BufRead,BufNewFile *.h nnoremap <buffer> <silent> <leader>A :call<SID>AlternateFile('c', 'm', 'cpp', 'cc')<cr>
+autocmd BufRead,BufNewFile *.{c\|m\|mm\|cpp\|cc} nnoremap <buffer> <silent> <leader>A :call<SID>AlternateFile('h')<cr>
+autocmd FileType c,objc,cpp,perl inoremap <buffer> <silent> ;; <c-r>=<SID>AppendSemicolon()<cr>
 autocmd User GoyoEnter nested call <SID>GoyoEnter()
 autocmd User GoyoLeave nested call <SID>GoyoLeave()
-
-" ============================
-" 3. Autocommands
-" ============================
 
 " Automatically open the quickfix window on :make
 " from: http://vim.wikia.com/wiki/Automatically_open_the_quickfix_window_on_:make
 autocmd QuickFixCmdPost [^l]* nested cwindow
 autocmd QuickFixCmdPost l* nested lwindow
-
-augroup ftdetect
-autocmd BufRead,BufNewFile *.h,*.m set filetype=objc
-autocmd BufRead,BufNewFile *.json set filetype=javascript
-autocmd BufRead,BufNewFile *.md set filetype=markdown
-augroup END
 
 autocmd FileType coffee setlocal indentexpr=indent
 autocmd FileType haskell setlocal makeprg=ghci\ \"%:p\"
@@ -328,3 +326,4 @@ autocmd FileType typescript,coffee,javascript,css setlocal softtabstop=2
 autocmd FileType typescript,coffee,javascript,css,objc setlocal nowrap
 autocmd FileType typescript,javascript setlocal indentexpr=cindent textwidth=110
 autocmd FileType vim,help let&l:keywordprg=':help'
+augroup END

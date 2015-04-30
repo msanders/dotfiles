@@ -6,6 +6,7 @@ alias cdisrc='cd ~/Documents/src/instacart'
 alias cdmsrc='cd ~/Documents/src/msanders'
 alias cdsrc='cd ~/Documents/src'
 alias cman="man -S2:3"
+alias fuckyouxcode='rm -rf ~/Library/Developer/Xcode/DerivedData'
 alias hide="chflags hidden"
 alias irb='irb --readline -r irb/completion'
 alias lock="sudo chflags uchg"
