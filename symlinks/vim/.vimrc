@@ -311,7 +311,7 @@ autocmd FileType coffee setlocal indentexpr=indent
 autocmd FileType haskell setlocal makeprg=ghci\ \"%:p\"
 autocmd FileType help nnoremap <buffer> q <c-w>q
 autocmd FileType html setlocal nowrap
-autocmd FileType html,vim,swift,objc,sh,fish setlocal softtabstop=4
+autocmd FileType html,vim,swift,objc,sh,fish,javascript,typescript setlocal softtabstop=4
 autocmd FileType objc setlocal colorcolumn=0
 autocmd FileType swift setlocal colorcolumn=100
 autocmd FileType objc,swift setlocal textwidth=100
@@ -322,7 +322,7 @@ autocmd FileType python,pyrex,javascript,typescript,coffee,swift setlocal wrap
 autocmd FileType ruby setlocal tabstop=2 shiftwidth=2
 autocmd FileType swift setlocal makeprg=xcrun\ swift\ -i\ %
 autocmd FileType typescript,coffee,javascript setlocal cursorcolumn
-autocmd FileType typescript,coffee,javascript,css setlocal softtabstop=2
+autocmd FileType coffee,css setlocal softtabstop=2
 autocmd FileType typescript,coffee,javascript,css,objc setlocal nowrap
 autocmd FileType typescript,javascript setlocal indentexpr=cindent textwidth=110
 autocmd FileType vim,help let&l:keywordprg=':help'
