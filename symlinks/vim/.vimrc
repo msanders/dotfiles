@@ -273,6 +273,10 @@ xnoremap m g_
 xnoremap v <esc>
 xmap s S
 
+" Clang-format
+map <c-k> :pyf $HOME/bin/clang-format.py<cr>
+imap <c-k> <c-o>:pyf $HOME/bin/clang-format.py<cr>
+
 " Goyo.vim callbacks
 function! s:GoyoEnter()
     let s:colorcolumn = &colorcolumn
@@ -313,7 +317,7 @@ autocmd FileType help nnoremap <buffer> q <c-w>q
 autocmd FileType html setlocal nowrap
 autocmd FileType html,vim,swift,objc,sh,fish,javascript,typescript setlocal softtabstop=4
 autocmd FileType objc setlocal colorcolumn=0
-autocmd FileType swift setlocal colorcolumn=100
+autocmd FileType swift,go setlocal colorcolumn=100
 autocmd FileType objc,swift setlocal textwidth=100
 autocmd FileType objc,python,pyrex,scheme,haskell,ruby,typescript,coffee,vim,html,sh,swift setlocal expandtab
 autocmd FileType python setlocal makeprg=python\ -t\ \"%:p\"

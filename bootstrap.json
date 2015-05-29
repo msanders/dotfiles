@@ -121,6 +121,7 @@
         "fish/*.fish": "~/.config/fish/",
         "fish/functions/*": "~/.config/fish/functions/",
         "git/.*": "~",
+        "lldb/.*": "~",
         "sh/.*": "~",
         "vim/.*": "~",
         "xvim/.*": "~",
