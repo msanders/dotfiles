@@ -9,9 +9,6 @@
     "com.apple.Terminal": {
         "AppleShowScrollbars": "WhenScrolling"
     },
-    "com.apple.dashboard": {
-        "mcx-disabled": true
-    },
     "com.apple.desktopservices": {
         "DSDontWriteNetworkStores": true
     },
