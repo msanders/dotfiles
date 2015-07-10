@@ -35,6 +35,7 @@ Plugin 'tpope/vim-surround'
 Plugin 'wincent/Command-T'
 Plugin 'xolox/vim-misc'
 Plugin 'xolox/vim-notes'
+Plugin 'cfdrake/vim-carthage'
 
 let g:goyo_width = 100
 let g:notes_directories = ['~/Dropbox/Notes']

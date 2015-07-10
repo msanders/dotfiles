@@ -14,7 +14,6 @@
         "charles",
         "chatology",
         "colorpicker",
-        "crashlytics",
         "dropbox",
         "emacs",
         "fabric",
@@ -109,11 +108,11 @@
         "zopfli"
     ],
     "icons": {
-        "MacVim": "https://github.com/jasonlong/macvim/blob/024f6d4395c3e2f873e020cdddd7f3d22d05166a/src/MacVim/icons/MacVim.icns?raw=true",
-        "Steam": "~/Dropbox/Images/Icons/Steam.icns",
-        "HipChat": "~/Dropbox/Images/Icons/HipChat.icns",
+        "Firefox": "~/Dropbox/Images/Icons/Firefox.icns",
         "GitX": "https://dl.dropboxusercontent.com/u/102041/icons/gitx.icns",
-        "Firefox": "~/Dropbox/Images/Icons/Firefox.icns"
+        "HipChat": "~/Dropbox/Images/Icons/HipChat.icns",
+        "MacVim": "https://github.com/jasonlong/macvim/blob/024f6d4395c3e2f873e020cdddd7f3d22d05166a/src/MacVim/icons/MacVim.icns?raw=true",
+        "Steam": "~/Dropbox/Images/Icons/Steam.icns"
     },
     "symlinks": {
         "bash/.*": "~",
