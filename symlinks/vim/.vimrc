@@ -25,7 +25,7 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'junegunn/goyo.vim'
 Plugin 'junegunn/limelight.vim'
 Plugin 'leafgarland/typescript-vim'
-Plugin 'msanders/cocoa.vim'
+"Plugin 'msanders/cocoa.vim'
 Plugin 'msanders/snipMate.vim'
 Plugin 'rking/ag.vim'
 Plugin 'scrooloose/nerdtree'
@@ -320,7 +320,7 @@ autocmd FileType html,vim,swift,objc,sh,fish,javascript,typescript setlocal soft
 autocmd FileType objc setlocal colorcolumn=0
 autocmd FileType swift,go setlocal colorcolumn=100
 autocmd FileType objc,swift setlocal textwidth=100
-autocmd FileType objc,python,pyrex,scheme,haskell,ruby,typescript,coffee,vim,html,sh,swift setlocal expandtab
+autocmd FileType objc,python,pyrex,scheme,haskell,ruby,typescript,javascript,coffee,vim,html,sh,swift setlocal expandtab
 autocmd FileType python setlocal makeprg=python\ -t\ \"%:p\"
 autocmd FileType python,pyrex,javascript,typescript,coffee setlocal textwidth=80 colorcolumn=80 wrap
 autocmd FileType python,pyrex,javascript,typescript,coffee,swift setlocal wrap

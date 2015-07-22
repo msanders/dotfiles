@@ -5,6 +5,7 @@
     editor = vim
 	whitespace = trailing-space,space-before-tab
 	excludesfile = ~/.gitignore
+	pull = pull --ff-only
 [alias]
     up = "!git remote update -p; git merge --ff-only @{u}"
 [alias]
