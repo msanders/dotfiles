@@ -14,7 +14,7 @@ struct MacVim {
         // NSTask doesn't seem to play nicely with vim (e.g. `gvim -v`)
         let launchPath = appPath.joinPath(self.cliPath)
         let escaped = args.map { arg in arg.shellescape }
-        system(launchPath + " " + join(" ", escaped))
+        system(launchPath + " " + escaped.joinWithSeparator(" "))
     }
 
     static func installationPath() -> String? {
@@ -24,14 +24,14 @@ struct MacVim {
 
     static func findActive() -> NSRunningApplication? {
         let workspace = NSWorkspace.sharedWorkspace()
-        let runningApps = workspace.runningApplications as? [NSRunningApplication] ?? []
+        let runningApps = workspace.runningApplications
         return runningApps.filter({
             app in app.bundleIdentifier == self.bundleID
         }).first
     }
 
     static func windows(pid: Int) -> [[String: AnyObject]] {
-        let windows = CGWindowListCopyWindowInfo(16, 0).takeUnretainedValue() as?
+        let windows = CGWindowListCopyWindowInfo(CGWindowListOption(rawValue: 16), 0) as?
             [[String: AnyObject]] ?? []
         return windows.filter({entry in
             let ownerPID = entry[kCGWindowOwnerPID as String] as? Int
@@ -54,7 +54,7 @@ func main() {
         NSWorkspace.sharedWorkspace().launchApplication("MacVim")
     } else if let appPath = MacVim.installationPath() {
         var args = ["-g"]
-        let cliFlags = Process.arguments.filter({ arg in startsWith(arg, "-") })
+        let cliFlags = Process.arguments.filter({ arg in arg.hasPrefix("-") })
 
         args += cliFlags.count == 0 && MacVim.activeWithWindows() ? ["--remote"] : []
         args += Process.arguments[1..<Process.arguments.count]

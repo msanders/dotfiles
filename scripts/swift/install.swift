@@ -1,19 +1,16 @@
 import Darwin
 import Foundation.NSError
 
-func findModules(dir: String) -> Result<[String]> {
+func findModules(dir: String) throws -> [String] {
     let excludedDirs = ["lib"]
     let fm = NSFileManager.defaultManager()
-    var error: NSError?
-    return Result(
-        fm.contentsOfDirectoryAtPath(dir, error:&error) as? [String],
-        error
-    ) . map { paths in paths.filter {
-        path in Script.isDir(path) && !contains(excludedDirs, path)
-    } }
+    let contents = try fm.contentsOfDirectoryAtPath(dir)
+    return contents.filter {
+        path in Script.isDir(path) && !excludedDirs.contains(path)
+    }
 }
 
-func compileModule(module: String, outDir: String) -> Result<String> {
+func compileModule(module: String, outDir: String) throws -> String {
     let dirname = Script.dirname.collapseUser
     let outPath = outDir.joinPath(module)
     let imports = "\(dirname)/lib/lib.swift " +
@@ -21,36 +18,33 @@ func compileModule(module: String, outDir: String) -> Result<String> {
                   "\(dirname)/\(module)/*.swift"
     let options = "-O -module-name \(module) -o \(outPath)"
     let cmd = "xcrun swiftc \(imports) \(options)"
-	return Shell.system(cmd, glob: true) . map { _ in outPath }
+	try Shell.system(cmd, glob: true)
+    return outPath
 }
 
-func compileModules(modules: [String], outDir: String) -> Result<[String]> {
+func compileModules(modules: [String], outDir: String) throws -> [String] {
     var values: [String] = []
     for module in modules {
-        switch compileModule(module, outDir) {
-            case let .Success(value):
-                values.append(value.unbox)
-            case let .Error(error):
-                return .Error(error)
-        }
+        let value = try compileModule(module, outDir: outDir)
+        values.append(value)
     }
 
-    return .Success(Box(values))
+    return values
 }
 
 func main() {
-	let outdir = Script.makeDirs("~/bin".expandUser)
-    switch findModules(Script.dirname).zip(outdir) >>- compileModules {
-        case let .Success(results):
-            let modules = results.unbox.map { $0.lastPathComponent }
-            let delimeter = modules.count > 1 ? "& " : ""
-            let formatted = join(", ", modules[0..<modules.count - 1]) +
-                            delimeter +
-                            modules[modules.count - 1]
-            let suffix = modules.count == 1 ? "" : "s"
-            println("Installed \(formatted) module\(suffix).")
-        case let .Error(error):
-            Shell.fail("Error: \(error.localizedDescription)")
+    do {
+        let results = try compileModules(findModules(Script.dirname), 
+                                         outDir: Script.makeDirs("~/bin".expandUser))
+        let modules = results.map { NSURL(string: $0)?.lastPathComponent ?? "" }
+        let delimeter = modules.count > 1 ? "& " : ""
+        let formatted = modules[0..<modules.count - 1].joinWithSeparator(", ") +
+                        delimeter +
+                        modules[modules.count - 1]
+        let suffix = modules.count == 1 ? "" : "s"
+        print("Installed \(formatted) module\(suffix).")
+    } catch {
+        Shell.fail("Error: \(error)")
     }
 }
 

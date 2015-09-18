@@ -26,14 +26,10 @@ public struct Script {
         return fm.fileExistsAtPath(path, isDirectory:&isDir) && isDir
     }
 
-    static func makeDirs(path: String) -> Result<String> {
+    static func makeDirs(path: String) throws -> String {
         let fm = NSFileManager.defaultManager()
-        var error: NSError?
-        let success = fm.createDirectoryAtPath(path,
-                                               withIntermediateDirectories:true,
-                                               attributes:nil,
-                                               error:&error)
-		return Result(success ? path : nil, error)
+        try fm.createDirectoryAtPath(path, withIntermediateDirectories:true, attributes:nil)
+        return path
     }
 
     static func error(msg: String, code: Int = 1) -> NSError {
@@ -44,7 +40,7 @@ public struct Script {
 }
 
 public struct Shell {
-    static func subprocess(components: [String]) -> Result<String> {
+    static func subprocess(components: [String]) throws -> String {
         let task = NSTask()
         let outPipe = NSPipe()
         task.launchPath = "/usr/bin/env"
@@ -55,26 +51,28 @@ public struct Shell {
         let data = outPipe.fileHandleForReading.readDataToEndOfFile()
         let output = NSString(data:data, encoding:NSUTF8StringEncoding) ?? ""
         let code = Int(task.terminationStatus)
-		let cmd = join(" ", components)
-		return code == 0 ? Result.Success(Box(output as String)) : Result.Error(
-			Script.error("`\(cmd)` failed with code \(code)")
-		)
+		let cmd = components.joinWithSeparator(" ")
+        if code != 0 {
+           throw Script.error("`\(cmd)` failed with code \(code)")
+        }
+
+        return output as String
     }
 
-    static func system(cmd: String, glob: Bool = false) -> Result<String> {
-        return subprocess(
+    static func system(cmd: String, glob: Bool = false) throws -> String {
+        return try subprocess(
             glob ? ["sh", "-c", cmd] : cmd.componentsSeparatedByString(" ")
         )
     }
 
     static func fail(msg: String, code: Int = 1) {
-        println(msg, &stderr)
+        print(msg, toStream: &stderr)
         exit(Int32(code))
     }
 
     static func getpass(prompt: String) -> String? {
         if let pw = String(UTF8String: Darwin.getpass(prompt)) {
-            return count(pw) > 0 ? pw : nil
+            return pw.characters.count > 0 ? pw : nil
         }
 
         return nil
