@@ -9,7 +9,6 @@
         "brew linkapps"
     ],
     "casks": [
-        "adobe-creative-cloud",
         "bittorrent-sync",
         "dropbox",
         "emacs",
@@ -45,16 +44,13 @@
         "shrinkit",
         "sketch",
         "spectacle",
-        "spotify",
         "steam",
         "sublime-text",
         "superduper",
-        "textmate",
         "torbrowser",
         "transmission",
         "xact",
-        "xquartz",
-        "zoomus"
+        "xquartz"
     ],
     "dependencies": {
         "mit-scheme": "casks/xquartz"
@@ -64,7 +60,6 @@
         "caskroom/cask/brew-cask",
         "chromedriver",
         "cowsay",
-        "dnscrypt-proxy",
         "elasticsearch",
         "ffmpeg",
         "fish",
@@ -101,8 +96,7 @@
     ],
     "icons": {
         "Firefox": "~/Dropbox/Images/Icons/Firefox.icns",
-        "GitX": "https://dl.dropboxusercontent.com/u/102041/icons/gitx.icns",
-        "HipChat": "~/Dropbox/Images/Icons/HipChat.icns",
+        "Slack": "~/Dropbox/Images/Icons/Slack.icns",
         "MacVim": "https://github.com/jasonlong/macvim/blob/024f6d4395c3e2f873e020cdddd7f3d22d05166a/src/MacVim/icons/MacVim.icns?raw=true",
         "Slack": "~/Dropbox/Images/Icons/Slack.icns",
         "Steam": "~/Dropbox/Images/Icons/Steam.icns"
