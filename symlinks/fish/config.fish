@@ -40,7 +40,7 @@ set fish_color_cwd green
 # rbenv support
 set -gx RBENV_ROOT /usr/local/var/rbenv
 if which rbenv > /dev/null
-    . (rbenv init -|psub)
+    . (rbenv init - fish|psub)
 end
 
 # Add GHC 7.8.3 to the PATH, via http://ghcformacosx.github.io/

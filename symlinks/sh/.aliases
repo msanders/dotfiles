@@ -1,9 +1,11 @@
 # vim:ft=sh
 
 alias battery="pmset -g ps"
+alias cdcloud='cd ~/Library/Mobile\ Documents'
 alias cdesrc='cd ~/Documents/src/etc'
 alias cdisrc='cd ~/Documents/src/instacart'
 alias cdmsrc='cd ~/Documents/src/msanders'
+alias cdscratch='cd ~/Scratch'
 alias cdsrc='cd ~/Documents/src'
 alias cman="man -S2:3"
 alias hide="chflags hidden"

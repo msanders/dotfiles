@@ -17,6 +17,7 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 Plugin 'Keithbsmiley/swift.vim'
+Plugin 'editorconfig/editorconfig-vim'
 Plugin 'airblade/vim-rooter'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'dag/vim-fish'
