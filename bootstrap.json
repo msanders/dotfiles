@@ -22,25 +22,20 @@
         "hex-fiend",
         "imageoptim",
         "lingon-x",
+        "macdown",
         "max",
-        "mou",
         "mplayerx",
         "pacifist",
         "peepopen",
         "postgres",
-        "qlcolorcode",
-        "qlstephen",
         "reveal",
         "shrinkit",
         "spectacle",
-        "steam",
         "sublime-text",
         "transmission"
     ],
     "formulas": [
         "bash",
-        "carthage",
-        "caskroom/cask/brew-cask",
         "cowsay",
         "fish",
         "git",
@@ -54,7 +49,6 @@
         "python",
         "python3",
         "rbenv --HEAD",
-        "rbenv-gem-rehash",
         "tig",
         "tmux",
         "wget",
@@ -64,14 +58,13 @@
         "zopfli"
     ],
     "icons": {
-        "Firefox": "~/Dropbox/Images/Icons/Firefox.icns",
-        "MacVim": "https://github.com/jasonlong/macvim/blob/024f6d4395c3e2f873e020cdddd7f3d22d05166a/src/MacVim/icons/MacVim.icns?raw=true",
-        "Slack": "~/Dropbox/Images/Icons/Slack.icns",
-        "Steam": "~/Dropbox/Images/Icons/Steam.icns"
+        "Firefox": "https://www.dropbox.com/s/pihdkmpu7exe944/Firefox.icns?dl=0",
+        "Slack": "https://www.dropbox.com/s/g9un4zy0jn49uym/Slack.icns?dl=0"
     },
     "symlinks": {
         "bash/.*": "~",
         "bin/*": "~/bin/",
+        "emacs/.*": "~",
         "fish/*.fish": "~/.config/fish/",
         "fish/functions/*": "~/.config/fish/functions/",
         "git/.*": "~",

@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-#SCRIPT=()
 for var in "$@"; do
     osascript -e "tell application \"$var\" to quit"
-    #SCRIPT+=("tell application \"$var\" to quit")
 done

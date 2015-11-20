@@ -43,14 +43,15 @@ if which rbenv > /dev/null
     . (rbenv init - fish|psub)
 end
 
-# Add GHC 7.8.3 to the PATH, via http://ghcformacosx.github.io/
-set --export GHC_DOT_APP "/opt/homebrew-cask/Caskroom/ghc/7.8.3-r1/ghc-7.8.3.app"
+# Add GHC.app to the PATH, via http://ghcformacosx.github.io/
+set --export GHC_DOT_APP "/opt/homebrew-cask/Caskroom/ghc/7.10.2-r0/ghc-7.10.2.app"
 if test -d "$GHC_DOT_APP"
-    set --export PATH "$HOME/.cabal/bin" "$GHC_DOT_APP/Contents/bin" $PATH
+    set --export PATH $PATH "$HOME/.cabal/bin" "$GHC_DOT_APP/Contents/bin"
+    set --export PATH "$HOME/.local/bin" $PATH
 end
 
 # Add Postgres.app to PATH
 set --export POSTGRES_DOT_APP "/Applications/Postgres.app"
 if test -d "$POSTGRES_DOT_APP"
-    set --export PATH "$POSTGRES_DOT_APP/Contents/Versions/9.3/bin" $PATH
+    set --export PATH "/Applications/Postgres.app/Contents/Versions/9.4/bin" $PATH
 end

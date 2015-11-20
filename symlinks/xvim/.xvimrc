@@ -9,6 +9,7 @@ inoremap <c-p> <up>
 inoremap <c-n> <down>
 inoremap <c-a> <esc>^i
 inoremap <c-e> <esc>A
+set laststatus=0
 
 " Workarounds for lack-of :put
 nnoremap <c-o> moA<cr><esc>`o

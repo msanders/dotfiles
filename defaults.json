@@ -1,7 +1,11 @@
 {
     "NSGlobalDomain": {
         "ApplePressAndHoldEnabled": false,
+        "KeyRepeat": 1,
         "NSScrollAnimationEnabled": false
+    },
+    "com.apple.notificationcenterui": {
+        "bannerTime": 3
     },
     "com.apple.Safari": {
         "FindOnPageMatchesWordStartsOnly": false

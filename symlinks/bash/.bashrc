@@ -4,7 +4,7 @@ if [ -z "$PS1" ]; then
 fi
 
 # Cabal
-export PATH="$HOME/.cabal/bin:$PATH"
+export PATH="$PATH:$HOME/.cabal/bin"
 
 # Homebrew
 export PATH="/usr/local/bin:$PATH"
