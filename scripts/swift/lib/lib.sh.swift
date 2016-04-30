@@ -1,3 +1,4 @@
+import Foundation
 import Darwin
 
 public class StandardErrorOutputStream: OutputStreamType {
