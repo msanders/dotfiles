@@ -1,6 +1,6 @@
 [user]
 	name = Michael Sanders
-	email = michael@msanders.com
+	email = michael.sanders@fastmail.com
 [core]
     editor = vim
 	whitespace = trailing-space,space-before-tab
@@ -36,3 +36,5 @@
 	required = true
 [credential]
 	helper = osxkeychain
+[commit]
+	gpgsign = true

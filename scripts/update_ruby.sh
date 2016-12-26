@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-set -eu
+set -o errexit -o pipefail -o nounset
 . "$(dirname "$0")/common.sh"
 
 export RBENV_ROOT=/usr/local/var/rbenv
@@ -11,6 +11,6 @@ else
 fi
 
 echo "Updating Ruby"
-rbenv install 2.2.0 --skip-existing
-rbenv global 2.2.0
+rbenv install 2.3.3 --skip-existing
+rbenv global 2.3.3
 gem update --system

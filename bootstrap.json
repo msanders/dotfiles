@@ -1,20 +1,17 @@
 {
     "after-scripts": [
         "./scripts/update_ruby.sh",
-        "./scripts/keybindings/install.sh",
+        "./scripts/KeyBindings/install.sh",
         "'./scripts/Terminal Launcher/install.sh'",
-        "cd ./scripts/swift && ./install",
         "./scripts/vim_setup.sh",
-        "./scripts/go_setup.sh",
         "brew linkapps"
     ],
     "casks": [
+        "cloak",
         "dropbox",
         "emacs",
-        "fabric",
         "firefox",
         "flux",
-        "ghc",
         "github-desktop",
         "gitup",
         "google-chrome",
@@ -48,7 +45,8 @@
         "pngcrush",
         "python",
         "python3",
-        "rbenv --HEAD",
+        "rbenv",
+        "rust",
         "tig",
         "tmux",
         "wget",
@@ -57,10 +55,6 @@
         "yuicompressor",
         "zopfli"
     ],
-    "icons": {
-        "Firefox": "https://www.dropbox.com/s/pihdkmpu7exe944/Firefox.icns?dl=0",
-        "Slack": "https://www.dropbox.com/s/g9un4zy0jn49uym/Slack.icns?dl=0"
-    },
     "symlinks": {
         "bash/.*": "~",
         "bin/*": "~/bin/",

@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-set -eu
+set -o errexit -o pipefail -o nounset
 
 puterr() {
     msg="$1"

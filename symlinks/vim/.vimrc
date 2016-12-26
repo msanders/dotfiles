@@ -17,18 +17,19 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 Plugin 'Keithbsmiley/swift.vim'
-Plugin 'editorconfig/editorconfig-vim'
 Plugin 'airblade/vim-rooter'
 Plugin 'altercation/vim-colors-solarized'
+Plugin 'cfdrake/vim-carthage'
 Plugin 'dag/vim-fish'
+Plugin 'editorconfig/editorconfig-vim'
 Plugin 'fatih/vim-go'
 Plugin 'gmarik/Vundle.vim'
 Plugin 'junegunn/goyo.vim'
 Plugin 'junegunn/limelight.vim'
 Plugin 'leafgarland/typescript-vim'
-"Plugin 'msanders/cocoa.vim'
 Plugin 'msanders/snipMate.vim'
 Plugin 'rking/ag.vim'
+Plugin 'rust-lang/rust.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'shemerey/vim-peepopen'
 Plugin 'tpope/vim-repeat'
@@ -36,8 +37,8 @@ Plugin 'tpope/vim-surround'
 Plugin 'wincent/Command-T'
 Plugin 'xolox/vim-misc'
 Plugin 'xolox/vim-notes'
-Plugin 'cfdrake/vim-carthage'
 
+let g:rustfmt_autosave = 1
 let g:goyo_width = 100
 let g:notes_directories = ['~/Dropbox/Notes']
 
@@ -317,7 +318,7 @@ autocmd FileType coffee setlocal indentexpr=indent
 autocmd FileType haskell setlocal makeprg=ghci\ \"%:p\"
 autocmd FileType help nnoremap <buffer> q <c-w>q
 autocmd FileType html setlocal nowrap
-autocmd FileType html,vim,swift,objc,sh,fish,javascript,typescript setlocal softtabstop=4
+autocmd FileType html,vim,swift,objc,rust,sh,fish,javascript,typescript setlocal softtabstop=4
 autocmd FileType objc setlocal colorcolumn=0
 autocmd FileType swift,go setlocal colorcolumn=100
 autocmd FileType objc,swift setlocal textwidth=100

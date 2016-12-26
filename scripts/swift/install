@@ -1,3 +1,0 @@
-#!/usr/bin/env bash
-DIRNAME=$(dirname "$0")
-cat "$DIRNAME/lib/lib.swift" "$DIRNAME"/lib/lib.*.swift "$DIRNAME/install.swift" | xcrun -sdk macosx swift -
