@@ -103,3 +103,6 @@ if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
 # added by travis gem
 [ -f /Users/mks/.travis/travis.sh ] && source /Users/mks/.travis/travis.sh
+
+# added by travis gem
+[ -f /Users/yam/.travis/travis.sh ] && source /Users/yam/.travis/travis.sh

@@ -1,2 +1,4 @@
 command alias uikit expr @import UIKit
 command alias foundation expr @import Foundation
+
+command script import "~/Library/Application Support/Realm/rlm_lldb.py" --allow-reload

@@ -33,6 +33,7 @@
     ],
     "formulas": [
         "bash",
+        "brightness",
         "cowsay",
         "fish",
         "git",

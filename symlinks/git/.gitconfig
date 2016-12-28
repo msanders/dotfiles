@@ -20,7 +20,7 @@
 	clean = git media clean %f
 	smudge = git media smudge %f
 [merge]
-	tool = chdiff
+	tool = opendiff
 [diff]
 	tool = chdiff
 [difftool]
