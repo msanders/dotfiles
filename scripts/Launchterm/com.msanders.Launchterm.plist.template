@@ -9,8 +9,8 @@
 	<key>RunAtLoad</key>
 	<true/>
 	<key>Label</key>
-	<string>com.msanders.TerminalLauncher</string>
+	<string>com.msanders.Launchterm</string>
 	<key>Program</key>
-	<string>/Users/${USER}/Library/Application Support/Terminal Launcher/Terminal Launcher</string>
+	<string>/Users/{USER}/Library/Application Support/Launchterm/Launchterm</string>
 </dict>
 </plist>

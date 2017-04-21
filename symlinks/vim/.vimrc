@@ -35,6 +35,7 @@ Plugin 'wincent/Command-T'
 Plugin 'xolox/vim-misc'
 Plugin 'xolox/vim-notes'
 
+let g:rust_recommended_style = 1
 let g:rustfmt_autosave = 1
 let g:goyo_width = 100
 let g:notes_directories = ['~/Dropbox/Notes']
@@ -311,23 +312,18 @@ autocmd User GoyoLeave nested call <SID>GoyoLeave()
 autocmd QuickFixCmdPost [^l]* nested cwindow
 autocmd QuickFixCmdPost l* nested lwindow
 
-autocmd FileType coffee setlocal indentexpr=indent
 autocmd FileType haskell setlocal makeprg=ghci\ \"%:p\"
 autocmd FileType help nnoremap <buffer> q <c-w>q
 autocmd FileType html setlocal nowrap
 autocmd FileType html,vim,swift,objc,rust,sh,fish,javascript,typescript setlocal softtabstop=4
+autocmd FileType objc,swift,typescript,javascript setlocal textwidth=100 colorcolumn=100
 autocmd FileType objc setlocal colorcolumn=0
-autocmd FileType swift,go setlocal colorcolumn=100
-autocmd FileType objc,swift setlocal textwidth=100
-autocmd FileType objc,python,pyrex,scheme,haskell,ruby,typescript,javascript,coffee,vim,html,sh,swift setlocal expandtab
+autocmd FileType objc,python,pyrex,scheme,haskell,ruby,typescript,javascript,vim,html,sh,swift setlocal expandtab
 autocmd FileType python setlocal makeprg=python\ -t\ \"%:p\"
-autocmd FileType python,pyrex,javascript,typescript,coffee setlocal textwidth=80 colorcolumn=80 wrap
-autocmd FileType python,pyrex,javascript,typescript,coffee,swift setlocal wrap
+autocmd FileType rust,python,pyrex,javascript,typescript,sh setlocal textwidth=80 colorcolumn=80 wrap
+autocmd FileType python,pyrex,javascript,typescript,swift setlocal wrap
 autocmd FileType ruby setlocal tabstop=2 shiftwidth=2
-autocmd FileType swift setlocal makeprg=xcrun\ swift\ -i\ %
-autocmd FileType typescript,coffee,javascript setlocal cursorcolumn
-autocmd FileType coffee,css setlocal softtabstop=2
-autocmd FileType typescript,coffee,javascript,css,objc setlocal nowrap
-autocmd FileType typescript,javascript setlocal indentexpr=cindent textwidth=110
+autocmd FileType typescript,javascript,css,objc setlocal nowrap
+autocmd FileType typescript,javascript setlocal indentexpr=cindent
 autocmd FileType vim,help let&l:keywordprg=':help'
 augroup END
