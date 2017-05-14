@@ -1,7 +1,8 @@
 {
     "after-scripts": [
-        "'./scripts/Launchterm/install'",
         "./scripts/KeyBindings/install",
+        "./scripts/Launchterm/install",
+        "./scripts/node_setup.sh",
         "./scripts/ruby_setup.sh",
         "./scripts/rust_setup.sh",
         "./scripts/vim_setup.sh",
@@ -47,6 +48,7 @@
         "hg",
         "macvim --overwrite-system-vi",
         "ncdu",
+        "node",
         "optipng",
         "pngcrush",
         "python",

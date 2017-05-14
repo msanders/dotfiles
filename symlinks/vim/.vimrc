@@ -16,12 +16,12 @@ endif
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
+Plugin 'ElmCast/elm-vim'
 Plugin 'Keithbsmiley/swift.vim'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'cfdrake/vim-carthage'
 Plugin 'dag/vim-fish'
 Plugin 'editorconfig/editorconfig-vim'
-Plugin 'fatih/vim-go'
 Plugin 'gmarik/Vundle.vim'
 Plugin 'leafgarland/typescript-vim'
 Plugin 'msanders/snipMate.vim'

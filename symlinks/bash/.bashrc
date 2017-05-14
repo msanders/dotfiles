@@ -10,10 +10,6 @@ export PATH="$PATH:$HOME/.cabal/bin"
 export PATH="/usr/local/bin:$PATH"
 export PATH="/usr/local/sbin:$PATH"
 
-# Go
-export GOPATH="$HOME/go"
-export PATH="$GOPATH/bin:$PATH"
-
 # Make bash check its window size after a process completes
 shopt -s checkwinsize
 
