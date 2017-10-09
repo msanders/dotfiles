@@ -12,8 +12,3 @@ if [ ! -d "$VIM_DIR/bundle/Vundle.vim" ]; then
 fi
 
 vim +PluginInstall +qall
-
-# Compile Command-T C extension
-cd "$HOME/.vim/bundle/command-t/ruby/command-t"
-ruby extconf.rb >/dev/null
-make >/dev/null

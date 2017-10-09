@@ -1,5 +1,5 @@
 set --export DEVELOPER_DIR "/Applications/Xcode.app/Contents/Developer"
-set --export EDITOR gvim
+set --export EDITOR vim
 set --export GITHUB_USERNAME msanders
 set --export GREP_OPTIONS "--color=auto"
 set --export LANG C
@@ -10,11 +10,11 @@ set --export fish_greeting
 set __fish_git_prompt_show_informative_status 'yes'
 
 if test -f $HOME/.aliases
-	. $HOME/.aliases
+    . $HOME/.aliases
 end
 
 if test -f $HOME/.secrets
-	. $HOME/.secrets
+    . $HOME/.secrets
 end
 
 set fish_color_normal normal
@@ -42,6 +42,10 @@ if test -d $CARGO_PATH
     set --export PATH $CARGO_PATH $PATH
 end
 
+if which rustc > /dev/null
+    set --export DYLD_LIBRARY_PATH (rustc --print sysroot)/lib $DYLD_LIBRARY_PATH
+end
+
 # Add GHC.app to the PATH, via http://ghcformacosx.github.io/
 set --export GHC_DOT_APP "/opt/homebrew-cask/Caskroom/ghc/7.10.2-r0/ghc-7.10.2.app"
 if test -d "$GHC_DOT_APP"
@@ -54,3 +58,5 @@ set --export POSTGRES_DOT_APP "/Applications/Postgres.app"
 if test -d "$POSTGRES_DOT_APP"
     set --export PATH "/Applications/Postgres.app/Contents/Versions/latest/bin" $PATH
 end
+
+set -g fish_user_paths "/usr/local/opt/node@6/bin" $fish_user_paths

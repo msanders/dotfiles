@@ -1,12 +1,4 @@
-" File: .vimrc
-" Author: Michael Sanders
-
-" ============================
-" Plugins
-" ============================
-set nocompatible
 set encoding=utf-8
-filetype off
 
 " Vim plugins expect a POSIX-compliant shell
 if &shell !~ '/sh$'
@@ -18,6 +10,7 @@ call vundle#begin()
 
 Plugin 'ElmCast/elm-vim'
 Plugin 'Keithbsmiley/swift.vim'
+Plugin 'airblade/vim-gitgutter'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'cfdrake/vim-carthage'
 Plugin 'dag/vim-fish'
@@ -31,13 +24,11 @@ Plugin 'shemerey/vim-peepopen'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-surround'
 Plugin 'vim-syntastic/syntastic'
-Plugin 'wincent/Command-T'
 Plugin 'xolox/vim-misc'
 Plugin 'xolox/vim-notes'
 
 let g:rust_recommended_style = 1
 let g:rustfmt_autosave = 1
-let g:goyo_width = 100
 let g:notes_directories = ['~/Dropbox/Notes']
 
 call vundle#end()
@@ -50,8 +41,6 @@ filetype plugin indent on
 " Autocompletion
 set wildignore+=*.o,*.obj,*.pyc,*.DS_Store,*.db,*.git
 set wildmenu
-set undofile
-set undodir=/tmp
 
 if exists('+wildignorecase')
     set wildignorecase
@@ -59,8 +48,10 @@ endif
 
 " Backup
 set nobackup
-set nowritebackup
 set noswapfile
+set nowritebackup
+set undodir=/tmp
+set undofile
 
 " Buffers
 set autoread
@@ -77,7 +68,7 @@ set t_ts=]1;
 set t_fs=
 
 " Editing
-set backspace=2
+set backspace=indent,eol,start
 set nofoldenable
 set pastetoggle=<f2>
 set shiftwidth=4
@@ -106,11 +97,11 @@ endif
 if has('gui_running')
     set columns=101 lines=38 " Default window size
     set guicursor=a:blinkon0 " Disable blinking cursor
-    set guifont=Menlo\ Regular:h13
+    set guifont=Menlo\ Regular:h16
     set guioptions=hae
 endif
 
-" Syntax (must go after :set guioptions+=M)
+" Syntax
 set t_Co=16
 if !&diff
     syntax on
@@ -120,12 +111,6 @@ if !&diff
     catch
         colorscheme slate
     endtry
-endif
-
-" Etc.
-let secrets_path=expand("$HOME/.vimrc_secrets")
-if filereadable(secrets_path)
-    exec ":source " . secrets_path
 endif
 
 " ============================
@@ -167,8 +152,6 @@ nnoremap <leader>D :lcd %:p:h<cr>
 nnoremap <leader>W <c-w>w
 nnoremap <leader>w :w<cr>
 nnoremap <leader>x :x<cr>
-nnoremap <leader>g :Goyo<cr>
-nnoremap <leader>t :CommandT<cr>
 nnoremap j gj
 nnoremap k gk
 
@@ -178,7 +161,7 @@ nnoremap <silent> <c-n> :nohlsearch<cr>
 " Alternate buffer (equivalent to :e #)
 nnoremap <leader>a <c-^>
 
-" Alternate file
+" Shortcut for switching to/from header files.
 function! s:AlternateFile(...)
     for extension in a:000
         let path = expand('%:p:r').'.'.extension
@@ -194,6 +177,18 @@ function! s:AlternateFile(...)
     echohl None
 endfunction
 
+" Shortcut for appending a semicolon at the end of a line.
+function! s:AppendSemicolon()
+    if pumvisible()
+        call feedkeys("\<esc>a", 'n')
+        call feedkeys(';;')
+    elseif getline('.') !~ ';$'
+        call setline('.', getline('.').';')
+    endif
+    return ''
+endfunction
+
+" Shortcut for toggling long lines past `textwidth`.
 function! s:ToggleLongLineHighlight()
     if !exists('w:overLength')
         let w:overLength = matchadd('ErrorMsg', '.\%>'.(&textwidth + 1).'v', 0)
@@ -205,8 +200,7 @@ function! s:ToggleLongLineHighlight()
     endif
 endfunction
 
-nnoremap <leader>H :<c-u>call<SID>ToggleLongLineHighlight()<cr>
-
+" Shortcut for removing trailing whitespace.
 function! s:RemoveWhitespace()
     if &binary
         return
@@ -224,8 +218,6 @@ function! s:RemoveWhitespace()
     endif
 endfunction
 
-nnoremap <silent> <leader>R :call<SID>RemoveWhitespace()<cr>
-
 " * and # should search for selected text when used in visual mode
 function! s:VisualSearch()
     let old = @"
@@ -234,61 +226,28 @@ function! s:VisualSearch()
     let @" = old
 endfunction
 
+nnoremap <leader>H :<c-u>call<SID>ToggleLongLineHighlight()<cr>
+nnoremap <silent> <leader>R :call<SID>RemoveWhitespace()<cr>
 xnoremap * :<c-u>call<SID>VisualSearch()<cr>/<cr>
 xnoremap # :<c-u>call<SID>VisualSearch()<cr>?<cr>
-
-" Shortcut for appending a semicolon at the end of a line.
-function! s:AppendSemicolon()
-    if pumvisible()
-        call feedkeys("\<esc>a", 'n')
-        call feedkeys(';;')
-    elseif getline('.') !~ ';$'
-        call setline('.', getline('.').';')
-    endif
-    return ''
-endfunction
-
-" Easily reload rc files
-command! ReloadRC source $MYVIMRC | if len($MYGVIMRC) | source $MYGVIMRC | endif
 
 " Sane navigation in command mode
 noremap! <c-a> <home>
 noremap! <c-e> <end>
-cnoremap <c-h> <left>
-cnoremap <c-l> <right>
-cnoremap <c-b> <s-left>
-cnoremap <c-f> <s-right>
+cnoremap <c-b> <left>
+cnoremap <c-f> <right>
 cnoremap <c-k> <c-\>estrpart(getcmdline(), 0, getcmdpos()-1)<cr>
 
 " ... insert mode
-inoremap <silent> <c-b> <c-o>b
-inoremap <silent> <c-f> <esc>ea
-inoremap <c-h> <left>
-inoremap <c-l> <right>
+inoremap <c-b> <left>
+inoremap <c-f> <right>
 inoremap <c-k> <c-o>D
 inoremap <expr> <up> pumvisible() ? '<c-p>' : '<c-o>k'
 inoremap <expr> <down> pumvisible() ? '<c-n>' : '<c-o>j'
 
 " ... and visual mode
-xnoremap m g_
 xnoremap v <esc>
 xmap s S
-
-" Clang-format
-map <c-k> :pyf $HOME/bin/clang-format.py<cr>
-imap <c-k> <c-o>:pyf $HOME/bin/clang-format.py<cr>
-
-" Goyo.vim callbacks
-function! s:GoyoEnter()
-    let s:colorcolumn = &colorcolumn
-    set colorcolumn=0
-endfunction
-
-function! s:GoyoLeave()
-    if exists('s:colorcolumn')
-        set colorcolumn=&s:colorcolumn
-    endif
-endfunction
 
 " ============================
 " Autocommands
@@ -303,27 +262,15 @@ autocmd BufRead,BufNewFile *.md set filetype=markdown
 
 autocmd BufRead,BufNewFile *.h nnoremap <buffer> <silent> <leader>A :call<SID>AlternateFile('c', 'm', 'cpp', 'cc')<cr>
 autocmd BufRead,BufNewFile *.{c\|m\|mm\|cpp\|cc} nnoremap <buffer> <silent> <leader>A :call<SID>AlternateFile('h')<cr>
-autocmd FileType c,objc,cpp,perl inoremap <buffer> <silent> ;; <c-r>=<SID>AppendSemicolon()<cr>
-autocmd User GoyoEnter nested call <SID>GoyoEnter()
-autocmd User GoyoLeave nested call <SID>GoyoLeave()
+autocmd FileType c,cpp,objc,rust inoremap <buffer> <silent> ;; <c-r>=<SID>AppendSemicolon()<cr>
 
-" Automatically open the quickfix window on :make
-" from: http://vim.wikia.com/wiki/Automatically_open_the_quickfix_window_on_:make
-autocmd QuickFixCmdPost [^l]* nested cwindow
-autocmd QuickFixCmdPost l* nested lwindow
-
-autocmd FileType haskell setlocal makeprg=ghci\ \"%:p\"
-autocmd FileType help nnoremap <buffer> q <c-w>q
-autocmd FileType html setlocal nowrap
-autocmd FileType html,vim,swift,objc,rust,sh,fish,javascript,typescript setlocal softtabstop=4
-autocmd FileType objc,swift,typescript,javascript setlocal textwidth=100 colorcolumn=100
-autocmd FileType objc setlocal colorcolumn=0
-autocmd FileType objc,python,pyrex,scheme,haskell,ruby,typescript,javascript,vim,html,sh,swift setlocal expandtab
-autocmd FileType python setlocal makeprg=python\ -t\ \"%:p\"
-autocmd FileType rust,python,pyrex,javascript,typescript,sh setlocal textwidth=80 colorcolumn=80 wrap
-autocmd FileType python,pyrex,javascript,typescript,swift setlocal wrap
+autocmd FileType css,html,objc setlocal nowrap
+autocmd FileType elm,haskell,fish,html,javascript,objc,rust,sh,swift,typescript,vim setlocal softtabstop=4
+autocmd FileType elm,fish,haskell,html,javascript,objc,pyrex,python,ruby,sh,swift,typescript,vim setlocal expandtab
+autocmd FileType elm,haskell,python,pyrex,sh setlocal textwidth=80 colorcolumn=80
+autocmd FileType help,vim let&l:keywordprg=':help'
+autocmd FileType javascript,rust,typescript setlocal textwidth=100 colorcolumn=100
+autocmd FileType javascript,typescript setlocal indentexpr=cindent
 autocmd FileType ruby setlocal tabstop=2 shiftwidth=2
-autocmd FileType typescript,javascript,css,objc setlocal nowrap
-autocmd FileType typescript,javascript setlocal indentexpr=cindent
-autocmd FileType vim,help let&l:keywordprg=':help'
+autocmd FileType swift setlocal textwidth=120 colorcolumn=120
 augroup END

@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-set -eu
+set -o errexit -o pipefail -o nounset
 
 kegs=$(join <(brew leaves) <(brew deps "$1"))
 if [ -n "$kegs" ]; then

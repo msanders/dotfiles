@@ -1,7 +1,0 @@
-#!/usr/bin/env bash
-set -eu
-
-softwareupdate -i -a
-brew update
-brew upgrade
-diskutil repairPermissions /
