@@ -6,22 +6,20 @@
         "./scripts/ruby_setup.sh",
         "./scripts/rust_setup.sh",
         "./scripts/vim_setup.sh",
-        "./scripts/xcode_setup.sh",
-        "brew linkapps"
+        "./scripts/xcode_setup.sh"
     ],
     "casks": [
         "brave",
-        "cloak",
         "dnscrypt",
         "dropbox",
         "emacs",
+        "encryptme",
         "firefox",
         "flux",
-        "github-desktop",
         "gitup",
         "google-chrome",
         "google-hangouts",
-        "gpgtools",
+        "gpg-suite",
         "hex-fiend",
         "imageoptim",
         "lingon-x",
@@ -35,7 +33,8 @@
         "sketch",
         "spectacle",
         "sublime-text",
-        "transmission"
+        "transmission",
+        "transmit"
     ],
     "formulas": [
         "bash",
@@ -56,8 +55,6 @@
         "tig",
         "tmux",
         "wget",
-        "xctool",
-        "youtube-dl",
         "yuicompressor",
         "zopfli"
     ],

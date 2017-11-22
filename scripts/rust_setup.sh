@@ -5,6 +5,7 @@ if ! which rustup; then
     curl https://sh.rustup.rs -sSf | sh
 fi
 
+PATH="$HOME/.cargo/bin:$PATH"
 COMPLETIONS_DIR="$HOME/.config/fish/completions"
 
 set -x

@@ -51,10 +51,10 @@ final class HotKeyListener {
 func main() {
     let listener = HotKeyListener(keyCode: kVK_Space, modifiers: optionKey)
     listener.bind {
-        NSWorkspace.shared().launchApplication("Terminal")
+        NSWorkspace.shared.launchApplication("Terminal")
     }
 
-    NSApplication.shared().run()
+    NSApplication.shared.run()
 }
 
 main()

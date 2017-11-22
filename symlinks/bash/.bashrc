@@ -31,9 +31,6 @@ export HISTCONTROL=erasedups,ignorespace
 export HISTSIZE=1000
 shopt -s histappend
 
-# added by travis gem
-[ -f /Users/msanders/.travis/travis.sh ] && source /Users/msanders/.travis/travis.sh
-
 # Rbenv
 export RBENV_ROOT=/usr/local/var/rbenv
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
@@ -48,7 +45,7 @@ if [ -d "$GHC_DOT_APP" ]; then
 fi
 
 # added by travis gem
-[ -f /Users/mks/.travis/travis.sh ] && source /Users/mks/.travis/travis.sh
+[ -f "$HOME/.travis/travis.sh" ] && source /Users/mks/.travis/travis.sh
 
 # Add Postgres.app to PATH
 export POSTGRES_DOT_APP="/Applications/Postgres.app"
@@ -56,5 +53,4 @@ if [ -d "$POSTGRES_DOT_APP" ]; then
     export PATH=$PATH:"$POSTGRES_DOT_APP/Contents/Versions/9.3/bin"
 fi
 
-# added by travis gem
-[ -f /Users/yam/.travis/travis.sh ] && source /Users/yam/.travis/travis.sh
+export PATH="$HOME/.cargo/bin:$PATH"
