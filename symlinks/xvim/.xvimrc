@@ -2,7 +2,7 @@
 nnoremap ,A :xcmenucmd Jump to Next Counterpart<cr>
 nnoremap ,v :xcmenucmd Open in Assistant Editor<cr>
 nnoremap ,w :w<cr>
-nnoremap <c-l> :xcmenucmd Jump to Definition<cr>
+nnoremap <c-]> :xcmenucmd Jump to Definition<cr>
 nnoremap <home> gg
 nnoremap <end> G
 inoremap <c-p> <up>
@@ -24,8 +24,8 @@ inoremap <esc> <esc>m'
 nnoremap <c-n> :nohlsearch<cr>
 
 " Macros
-cnoremap jj <c-c>
-inoremap jj <esc>
+cnoremap fd <c-c>
+inoremap fd <esc>
 noremap ; :
 noremap \ ;
 
