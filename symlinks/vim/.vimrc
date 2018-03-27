@@ -18,6 +18,7 @@ Plugin 'editorconfig/editorconfig-vim'
 Plugin 'gmarik/Vundle.vim'
 Plugin 'leafgarland/typescript-vim'
 Plugin 'msanders/snipMate.vim'
+Plugin 'majutsushi/tagbar'
 Plugin 'rust-lang/rust.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'shemerey/vim-peepopen'
@@ -226,8 +227,7 @@ function! s:VisualSearch()
     let @" = old
 endfunction
 
-nnoremap <leader>H :<c-u>call<SID>ToggleLongLineHighlight()<cr>
-nnoremap <silent> <leader>R :call<SID>RemoveWhitespace()<cr>
+nnoremap <f8> :TagbarToggle<cr>
 xnoremap * :<c-u>call<SID>VisualSearch()<cr>/<cr>
 xnoremap # :<c-u>call<SID>VisualSearch()<cr>?<cr>
 

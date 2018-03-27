@@ -34,3 +34,7 @@
 	helper = osxkeychain
 [commit]
 	gpgsign = true
+[alias]
+	ctags = !.git/hooks/ctags
+[init]
+	templatedir = ~/.git_template
