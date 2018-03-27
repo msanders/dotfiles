@@ -2,6 +2,7 @@
     "after-scripts": [
         "./scripts/KeyBindings/install",
         "./scripts/Launchterm/install",
+        "./scripts/emacs_setup.sh",
         "./scripts/node_setup.sh",
         "./scripts/ruby_setup.sh",
         "./scripts/rust_setup.sh",
@@ -10,12 +11,12 @@
     ],
     "casks": [
         "brave",
-        "dnscrypt",
+        "colorpicker-developer",
         "dropbox",
-        "emacs",
         "encryptme",
         "firefox",
         "flux",
+        "font-source-code-pro",
         "gitup",
         "google-chrome",
         "google-hangouts",
@@ -37,14 +38,18 @@
         "transmit"
     ],
     "formulas": [
+        "ag",
         "bash",
         "brightness",
+        "cmake",
         "cowsay",
         "ctags",
         "dnsmasq --with-dnssec",
+        "emacs-plus --with-natural-title-bar",
         "fish",
         "git",
         "hg",
+        "ispell",
         "macvim --overwrite-system-vi",
         "ncdu",
         "node",
@@ -59,6 +64,9 @@
         "yuicompressor",
         "zopfli"
     ],
+    "icons": {
+        "Emacs": "~/Dropbox/Images/Icons/Emacs.icns"
+    },
     "symlinks": {
         "bash/.*": "~",
         "bin/*": "~/bin/",
@@ -73,5 +81,9 @@
         "xvim/.*": "~",
         "zsh/.zsh-functions/*": "~/.zsh-functions/",
         "zsh/.zshrc": "~"
-    }
+    },
+    "taps": [
+        "caskroom/fonts",
+        "d12frosted/emacs-plus"
+    ]
 }

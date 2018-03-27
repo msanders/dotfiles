@@ -2,30 +2,26 @@
 	name = Michael Sanders
 	email = michael.sanders@fastmail.com
 [core]
-    editor = vim
 	whitespace = trailing-space,space-before-tab
 	excludesfile = ~/.gitignore
 	pull = pull --ff-only
+[push]
+	default = tracking
 [mergetool]
 	keepBackup = false
 	prompt = false
-[push]
-	default = tracking
+[difftool]
+	prompt = false
+[diff]
+	tool = ediff
+[merge]
+	tool = opendiff
+[difftool "ediff"]
+	cmd = emacsclient --eval \"(ediff-files \\\"$LOCAL\\\" \\\"$REMOTE\\\")\" && open -a Emacs
 [filter "media"]
 	required = true
 	clean = git media clean %f
 	smudge = git media smudge %f
-[merge]
-	tool = opendiff
-[diff]
-	tool = chdiff
-[difftool]
-	prompt = false
-[difftool "chdiff"]
-    cmd = chdiff "$LOCAL" "$REMOTE"
-	trustExitCode = true
-[mergetool "chdiff"]
-    cmd = chdiff "$LOCAL" "$REMOTE"
 [filter "lfs"]
 	clean = git lfs clean %f
 	smudge = git lfs smudge %f

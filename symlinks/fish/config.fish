@@ -1,12 +1,11 @@
 set --export DEVELOPER_DIR "/Applications/Xcode.app/Contents/Developer"
-set --export EDITOR vim
+set --export EDITOR "emacsclient --alternate-editor=vim"
 set --export GITHUB_USERNAME msanders
 set --export GREP_OPTIONS "--color=auto"
 set --export LANG C
 set --export LC_ALL en_US.UTF-8
 set --export LSCOLORS cxfxexexexegedabagcxcx
 set --export PATH "$HOME/bin" "/usr/local/bin" "/usr/local/sbin" $PATH
-set --export PATH "/usr/local/opt/python/libexec/bin" $PATH
 set --export fish_greeting
 set __fish_git_prompt_show_informative_status 'yes'
 
@@ -38,7 +37,10 @@ if which rbenv > /dev/null
     . (rbenv init - fish|psub)
 end
 
-set --local CARGO_PATH "$HOME/.cargo/bin" 
+# Cask
+set --export PATH "$HOME/.cask/bin" $PATH
+
+set --local CARGO_PATH "$HOME/.cargo/bin"
 if test -d $CARGO_PATH
     set --export PATH $CARGO_PATH $PATH
 end
