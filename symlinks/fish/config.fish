@@ -5,7 +5,7 @@ set --export GREP_OPTIONS "--color=auto"
 set --export LANG C
 set --export LC_ALL en_US.UTF-8
 set --export LSCOLORS cxfxexexexegedabagcxcx
-set --export PATH "$HOME/bin" "/usr/local/bin" "/usr/local/sbin" $PATH
+set --export PATH "$HOME/bin" "$HOME/.local/bin" "/usr/local/bin" "/usr/local/sbin" $PATH
 set --export fish_greeting
 set __fish_git_prompt_show_informative_status 'yes'
 
@@ -33,8 +33,16 @@ set fish_color_cwd green
 
 # rbenv support
 set -gx RBENV_ROOT /usr/local/var/rbenv
-if which rbenv > /dev/null
+if which rbenv >/dev/null
     . (rbenv init - fish|psub)
+end
+
+# pyenv support
+set --export PYENV_ROOT "$HOME/.pyenv"
+set --export PATH "$PYENV_ROOT/bin" $PATH
+if which pyenv >/dev/null
+    mkdir -p "$PYENV_ROOT/bin"
+    status --is-interactive; and . (pyenv init -|psub)
 end
 
 # Cask
@@ -63,3 +71,5 @@ if test -d "$POSTGRES_DOT_APP"
 end
 
 set -g fish_user_paths "/usr/local/opt/node@6/bin" $fish_user_paths
+
+set --export RUST_SRC_PATH (rustc --print sysroot)/lib/rustlib/src/rust/src

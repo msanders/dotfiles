@@ -14,3 +14,4 @@ echo "Updating Ruby"
 rbenv install 2.3.5 --skip-existing
 rbenv global 2.3.5
 gem update --system
+gem install pry rubocop
