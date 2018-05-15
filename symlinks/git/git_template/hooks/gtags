@@ -2,10 +2,11 @@
 # From https://tbaggery.com/2011/08/08/effortless-ctags-with-git.html
 set -o errexit
 PATH="/usr/local/bin:$PATH"
-dir=$(git rev-parse --git-dir)
+dir=$(git rev-parse --show-toplevel)
 trap 'rm -f "$dir/$$.tags"' EXIT
+pushd "$dir"
 git ls-files --recurse-submodules | \
     grep -v "\\.\\(playground\\|xcworkspace\\|xcodeproj\\)" | \
-    ctags -e --tag-relative -L - -f"$dir/$$.tags"
-mv "$dir/$$.tags" "$dir/TAGS"
-echo "ctags index created at $dir/TAGS"
+    gtags --gtagslabel=pygments
+popd
+echo "gtags index created at $dir/GTAGS"
