@@ -6,3 +6,5 @@ command script import "~/Library/Application Support/Realm/rlm_lldb.py" --allow-
 ### Reveal LLDB commands support - DO NOT MODIFY
 command script import /Applications/Reveal.app/Contents/SharedSupport/Scripts/RevealServerCommands.py
 ###
+
+command script import /usr/local/opt/chisel/libexec/fblldb.py
