@@ -10,6 +10,7 @@
 (setq sentence-end-double-space nil)
 (setq-default c-basic-offset 4)
 (setq-default require-final-newline t)
+(setq ycmd-force-semantic-completion t)
 
 ;; Centralize backup location.
 (setq backup-directory-alist '(("~/.spacemacs.d/backups")))
@@ -35,9 +36,9 @@
                ))
 
 ;; YouCompleteMe hooks.
-(add-hook 'c++-mode-hook #'ycmd-init)
-(add-hook 'c-mode-hook #'ycmd-init)
-(add-hook 'js2-mode-hook #'ycmd-init)
-(add-hook 'python-mode-hook #'ycmd-init)
-(add-hook 'swift-mode-hook #'icmd-init)
+(add-hook 'c++-mode-hook #'michaelsanders-better-defaults/ycmd-init)
+(add-hook 'c-mode-hook #'michaelsanders-better-defaults/ycmd-init)
+(add-hook 'js2-mode-hook #'michaelsanders-better-defaults/ycmd-init)
+(add-hook 'python-mode-hook #'michaelsanders-better-defaults/ycmd-init)
+(add-hook 'swift-mode-hook #'michaelsanders-better-defaults/icmd-init)
 (add-hook 'company-mode-hook #'company-ycmd-setup)

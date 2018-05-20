@@ -62,6 +62,7 @@ values."
      version-control
      vimscript
      yaml
+     ycmd
      (auto-completion :variables auto-completion-enable-snippets-in-popup t)
      (better-defaults :variables
                       better-defaults-move-to-beginning-of-code-first t
