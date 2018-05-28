@@ -49,7 +49,7 @@
         "cmake",
         "cowsay",
         "ctags",
-        "emacs-plus --with-natural-title-bar",
+        "emacs-mac --with-natural-title-bar",
         "fish",
         "git",
         "hg",
@@ -88,6 +88,6 @@
     },
     "taps": [
         "caskroom/fonts",
-        "d12frosted/emacs-plus"
+        "railwaycat/emacsmacport"
     ]
 }

@@ -11,14 +11,10 @@
 (set-face-bold-p 'bold nil)
 
 ;; Open new files in same frame on Mac.
-(setq ns-pop-up-frames nil)
+(setq pop-up-windows nil)
 
 (setq neo-show-hidden-files nil)
 (setq neo-theme (if (display-graphic-p) 'icons 'arrow))
-(setq default-frame-alist '(
-                            (ns-transparent-titlebar . t)
-                            (ns-appearance . 'nil)
-                            ))
 (setq-default git-magit-status-fullscreen t)
 (defalias 'yes-or-no-p 'y-or-n-p)
 (setq delete-by-moving-to-trash t)
@@ -74,3 +70,42 @@
           (lambda () (setq-local helm-dash-docsets '("Ruby"))))
 (add-hook 'swift-mode-hook
           (lambda () (setq-local helm-dash-docsets '("Swift"))))
+
+;; emacs-mac config
+(when (memq (window-system) '(mac ns))
+  (setq default-frame-alist '(
+                              (ns-transparent-titlebar . t)
+                              (ns-appearance . dark)
+                              )))
+
+;; Add support for font ligatures.
+(when (window-system)
+  (let ((alist '((33 . ".\\(?:\\(?:==\\|!!\\)\\|[!=]\\)")
+                 (35 . ".\\(?:###\\|##\\|_(\\|[#(?[_{]\\)")
+                 (36 . ".\\(?:>\\)")
+                 (37 . ".\\(?:\\(?:%%\\)\\|%\\)")
+                 (38 . ".\\(?:\\(?:&&\\)\\|&\\)")
+                 (42 . ".\\(?:\\(?:\\*\\*/\\)\\|\\(?:\\*[*/]\\)\\|[*/>]\\)")
+                 (43 . ".\\(?:\\(?:\\+\\+\\)\\|[+>]\\)")
+                 (45 . ".\\(?:\\(?:-[>-]\\|<<\\|>>\\)\\|[<>}~-]\\)")
+                 (46 . ".\\(?:\\(?:\\.[.<]\\)\\|[.=-]\\)")
+                 (47 . ".\\(?:\\(?:\\*\\*\\|//\\|==\\)\\|[*/=>]\\)")
+                 (48 . ".\\(?:x[a-zA-Z]\\)")
+                 (58 . ".\\(?:::\\|[:=]\\)")
+                 (59 . ".\\(?:;;\\|;\\)")
+                 (60 . ".\\(?:\\(?:!--\\)\\|\\(?:~~\\|->\\|\\$>\\|\\*>\\|\\+>\\|--\\|<[<=-]\\|=[<=>]\\||>\\)\\|[*$+~/<=>|-]\\)")
+                 (61 . ".\\(?:\\(?:/=\\|:=\\|<<\\|=[=>]\\|>>\\)\\|[<=>~]\\)")
+                 (62 . ".\\(?:\\(?:=>\\|>[=>-]\\)\\|[=>-]\\)")
+                 (63 . ".\\(?:\\(\\?\\?\\)\\|[:=?]\\)")
+                 (91 . ".\\(?:]\\)")
+                 (92 . ".\\(?:\\(?:\\\\\\\\\\)\\|\\\\\\)")
+                 (94 . ".\\(?:=\\)")
+                 (119 . ".\\(?:ww\\)")
+                 (123 . ".\\(?:-\\)")
+                 (124 . ".\\(?:\\(?:|[=|]\\)\\|[=>|]\\)")
+                 (126 . ".\\(?:~>\\|~~\\|[>=@~-]\\)")
+                 )
+               ))
+    (dolist (char-regexp alist)
+      (set-char-table-range composition-function-table (car char-regexp)
+                            `([,(cdr char-regexp) 0 font-shape-gstring])))))
