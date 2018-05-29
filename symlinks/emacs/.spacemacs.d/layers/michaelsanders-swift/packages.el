@@ -10,10 +10,16 @@
     flycheck-swiftlint
     ggtags
     helm-gtags
+    swift-playground-mode
    ))
 
 (defun michaelsanders-swift/init-flycheck-swiftlint ()
   (use-package flycheck-swiftlint :ensure t :defer t))
+
+(defun michaelsanders-swift/init-swift-playground-mode ()
+  (use-package swift-playground-mode :defer t :init
+    (autoload 'swift-playground-toggle-if-needed "swift-playground-mode" nil t)
+    (add-hook 'swift-mode-hook #'swift-playground-toggle-if-needed)))
 
 (defun michaelsanders-swift/post-flycheck-swiftlint ()
   (with-eval-after-load 'flycheck (flycheck-swiftlint-setup)))
