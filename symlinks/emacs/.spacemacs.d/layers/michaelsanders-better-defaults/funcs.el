@@ -60,3 +60,10 @@ command, restarting the server if necessary."
         ('file-error
          (message "Walk directory %S failed." path)
          nil)))))
+
+(defun michaelsanders-better-defaults/objective-c-file-p ()
+  (and buffer-file-name
+	     (file-name-extension buffer-file-name)
+       (member (file-name-extension buffer-file-name) '("m" "h"))
+       (re-search-forward "@interface\\|@implementation\\|@import\\|#import"
+                          magic-mode-regexp-match-limit t)))
