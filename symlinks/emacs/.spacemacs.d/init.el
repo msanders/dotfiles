@@ -68,6 +68,9 @@ values."
                       better-defaults-move-to-beginning-of-code-first t
                       better-defaults-move-to-end-of-code-first t)
      (haskell :variables haskell-completion-backend 'intero)
+     (org :variables
+          org-enable-github-support t
+          org-projectile-file "TODOs.org")
      (python :variables
              python-enable-yapf-format-on-save t
              python-sort-imports-on-save t)

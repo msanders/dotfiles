@@ -6,6 +6,7 @@
 
 (configuration-layer/declare-layers '(
                                       michaelsanders-better-defaults
+                                      michaelsanders-org
                                       michaelsanders-swift
                                       michaelsanders-ui
                                       ))
