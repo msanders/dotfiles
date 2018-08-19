@@ -6,7 +6,7 @@
 	excludesfile = ~/.gitignore
 	pull = pull --ff-only
 [push]
-	default = tracking
+	default = current
 [mergetool]
 	keepBackup = false
 	prompt = false
@@ -34,3 +34,5 @@
 	gtags = !.git/hooks/gtags
 [init]
 	templatedir = ~/.git_template
+[merge "ours"]
+	driver = true

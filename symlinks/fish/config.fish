@@ -70,6 +70,9 @@ if test -d "$POSTGRES_DOT_APP"
     set --export PATH "/Applications/Postgres.app/Contents/Versions/latest/bin" $PATH
 end
 
-set -g fish_user_paths "/usr/local/opt/node@6/bin" $fish_user_paths
-
 set --export RUST_SRC_PATH (rustc --print sysroot)/lib/rustlib/src/rust/src
+
+function notify
+    if [ $argv ]; set message $argv; else; set message "Done running task"; end
+    terminal-notifier -title "✅ Done" -message $message -timeout 5
+end
