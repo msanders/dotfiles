@@ -1,8 +1,12 @@
-To bootstrap:
+## Installation
+
+Run this:
 
 ```sh
-easy_install pip # (If on clean install)
 pip install -U cider
-git clone https://github.com/msanders/dotfiles.git ~/.cider
+git clone --recursive https://github.com/msanders/dotfiles ~/.cider
 cider restore
 ```
+
+This will symlink the appropriate files to your home directory. Everything is
+configured and tweaked within `~/.cider`.
