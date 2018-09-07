@@ -45,6 +45,7 @@
     "formulas": [
         "ag",
         "bash",
+        "bat",
         "brightness",
         "cmake",
         "cowsay",
@@ -56,6 +57,7 @@
         "ispell",
         "shyiko/ktlint/ktlint",
         "macvim --overwrite-system-vi",
+        "markdown"
         "ncdu",
         "node",
         "optipng",
