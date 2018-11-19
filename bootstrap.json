@@ -57,7 +57,7 @@
         "ispell",
         "shyiko/ktlint/ktlint",
         "macvim --overwrite-system-vi",
-        "markdown"
+        "markdown",
         "ncdu",
         "node",
         "optipng",
