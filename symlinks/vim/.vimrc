@@ -1,12 +1,10 @@
-set encoding=utf-8
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
 " Vim plugins expect a POSIX-compliant shell
 if &shell !~ '/sh$'
     set shell=/bin/sh
 endif
-
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
 
 Plugin 'ElmCast/elm-vim'
 Plugin 'MarcWeber/vim-addon-mw-utils'
@@ -35,6 +33,7 @@ Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-rsi'
+Plugin 'tpope/vim-sensible'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'vim-syntastic/syntastic'
@@ -51,7 +50,6 @@ filetype plugin indent on
 
 " Autocompletion
 set wildignore+=*.o,*.obj,*.pyc,*.DS_Store,*.db,*.git
-set wildmenu
 
 if exists('+wildignorecase')
     set wildignorecase
@@ -65,17 +63,15 @@ set undodir=/tmp
 set undofile
 
 " Buffers
-set autoread
 set hidden
 
 " Display
-set rulerformat=%l:%c ruler
+set rulerformat=%l:%c
 set shortmess=atI
 set showcmd
 set titlestring=%f title
 
 " Editing
-set backspace=indent,eol,start
 set nofoldenable
 set pastetoggle=<f2>
 set shiftwidth=4
@@ -115,7 +111,6 @@ endif
 silent! colorscheme zenburn
 
 " Syntax
-set t_Co=16
 if !&diff
     syntax on
 endif
