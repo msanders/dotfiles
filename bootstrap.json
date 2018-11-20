@@ -1,5 +1,6 @@
 {
     "after-scripts": [
+        "./scripts/Grayscale/install",
         "./scripts/KeyBindings/install",
         "./scripts/Launchterm/install",
         "./scripts/emacs_setup.sh",
