@@ -10,6 +10,7 @@
         "./scripts/ruby_setup.sh",
         "./scripts/rust_setup.sh",
         "./scripts/swift_setup.sh",
+        "./scripts/system_setup.sh",
         "./scripts/vim_setup.sh",
         "./scripts/xcode_setup.sh",
         "./scripts/ycmd_setup.sh"
