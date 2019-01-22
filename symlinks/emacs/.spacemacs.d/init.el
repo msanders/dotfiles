@@ -87,7 +87,7 @@ values."
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
-   dotspacemacs-additional-packages '(pyenv-mode pyenv-mode-auto)
+   dotspacemacs-additional-packages '(pyenv-mode pyenv-mode-auto doom-themes)
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
    ;; A list of packages that will not be installed and loaded.
@@ -349,6 +349,7 @@ layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
+  (when (display-graphic-p) (load-theme 'doom-Iosvkem t))
   (load (expand-file-name "secrets.el" dotspacemacs-directory))
   (global-git-commit-mode t)
   (editorconfig-mode t)
