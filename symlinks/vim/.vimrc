@@ -220,6 +220,12 @@ inoremap <c-l> <c-o>:call<SID>Redraw()<cr>
 inoremap <expr> <down> pumvisible() ? '<c-n>' : '<c-o>j'
 inoremap <expr> <up> pumvisible() ? '<c-p>' : '<c-o>k'
 
+" Spacemacs bindings
+let g:spacemacs#excludes = [
+  \ '^ff',
+\ ]
+nnoremap <leader>ff :lcd %:p:h<cr>:e<space>
+
 " Terminal registers <c-/> as <c-_> https://stackoverflow.com/a/9051932
 imap <c-_> <c-/>
 
