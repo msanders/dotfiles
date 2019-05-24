@@ -76,3 +76,5 @@ function notify
     if [ $argv ]; set message $argv; else; set message "Done running task"; end
     terminal-notifier -title "✅ Done" -message $message -timeout 5
 end
+
+fish_hybrid_key_bindings
