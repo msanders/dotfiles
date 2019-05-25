@@ -3,7 +3,7 @@ set -o errexit -o pipefail -o nounset
 . "$(dirname "$0")/common.sh"
 
 export RBENV_ROOT=/usr/local/var/rbenv
-if which rbenv > /dev/null; then
+if command -v rbenv > /dev/null; then
     eval "$(rbenv init -)";
 else
     puterr "rbenv not installed"
@@ -11,7 +11,7 @@ else
 fi
 
 echo "Updating Ruby"
-rbenv install 2.3.5 --skip-existing
-rbenv global 2.3.5
+rbenv install 2.5.5 --skip-existing
+rbenv global 2.5.5
 gem update --system
-gem install pry rubocop
+gem install pry rubocop terminal-notifier
