@@ -14,24 +14,28 @@
 	prompt = false
 [diff]
 	tool = ediff
+	algorithm = histogram
 [merge]
 	tool = opendiff
+[diff "swift"]
+	xfuncname = "^ *((\\w+ +)*(((class|struct|enum|protocol|extension|func|(de)?init)\\b.*)|((var|let)\\b.*\\{)))$"
 [difftool "ediff"]
 	cmd = emacsclient --eval \"(ediff-files \\\"$LOCAL\\\" \\\"$REMOTE\\\")\" && open -a Emacs
-[filter "media"]
-	required = true
-	clean = git media clean %f
-	smudge = git media smudge %f
-[filter "lfs"]
-	clean = git lfs clean %f
-	smudge = git lfs smudge %f
-	required = true
 [credential]
 	helper = osxkeychain
 [commit]
 	gpgsign = true
 [alias]
 	gtags = !.git/hooks/gtags
+	graph = log --oneline --decorate --graph
+	upgraph = log --oneline --decorate --graph @{upstream}..
+	in = diff --staged
+	out = diff
+	eeny = add --patch
+	smuggle = commit --amend -C HEAD
+	start = checkout -b
+	restart = checkout -B
+	unstage = reset HEAD
 [init]
 	templatedir = ~/.git_template
 [merge "ours"]
