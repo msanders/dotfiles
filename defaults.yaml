@@ -1,0 +1,98 @@
+NSGlobalDomain:
+  # Disable press and hold character picker.
+  ApplePressAndHoldEnabled: false
+
+  # System Preferences > Keyboard > Key Repeat.
+  KeyRepeat: 1
+
+  # System Preferences > Keyboard > Delay Until Repeat.
+  InitialKeyRepeat: 15
+
+  # Disable smooth scrolling
+  NSScrollAnimationEnabled: false
+
+  # Delay to show menu bar in full screen.
+  NSToolbarFullScreenAnimationDuration: 0.05
+
+com.apple.Safari:
+  # Use substring search by default in Safari.
+  FindOnPageMatchesWordStartsOnly: false
+
+com.apple.desktopservices:
+  # Disable .DS_Store files on network drives.
+  DSDontWriteNetworkStores: true
+
+com.apple.dock:
+  # System Preferences > Dock > Automatically hide and show the Dock.
+  autohide: true
+
+  # Delay when showing the dock.
+  expose-animation-duration: 0.05
+
+  # System Preferences > Dock > Position on screen.
+  orientation: left
+
+  # System Preferences > Dock > Show indicators for open applications.
+  show-process-indicators: false
+
+  # System Preferences > Dock > Show recent applications in Dock.
+  show-recents: false
+
+  # System Preferences > Dock > Size.
+  tilesize: 72
+
+  # System Preferences > Dock > Minimize windows using: Scale effect.
+  mineffect: "scale"
+
+com.apple.finder:
+  # Finder > View > Show view options > Sort Group By > Name.
+  FXArrangeGroupViewBy: Name
+
+  # Finder > Preferences > Advanced > When performing a search > Search the
+  # current folder.
+  FXDefaultSearchScope: SCcf
+
+  # Finder > View > Show view options > Group By > None.
+  FXPreferredGroupBy: None
+
+  # Finder > View > As List.
+  FXPreferredViewStyle: Nlsv
+
+  # Finder > Preferences > Show these items on the desktop > Hard disks.
+  ShowHardDrivesOnDesktop: false
+
+  # Enable "Quit Finder" menu item.
+  QuitMenuItem: true
+
+com.apple.dt.Xcode:
+  # Xcode > Preferences > Text Editing > Page guide at column.
+  DVTTextShowPageGuide: true
+
+  # Xcode > Preferences > Text Editing > While editing: Automatically trim
+  # trailing whitespace.
+  DVTTextEditorTrimTrailingWhitespace: true
+
+  # Xcode > Preferences > Text Editing > While editing: Automatically trim
+  # trailing whitespace > Including whitespace-only lines.
+  DVTTextEditorTrimWhitespaceOnlyLines: true
+
+  # Xcode > Preferences > Text Editing > Page guide at column: 120.
+  DVTTextPageGuideLocation: 120
+
+  # Xcode > Preferences > General > Issue Navigator Detail > Up to Ten Lines.
+  IDESearchNavigatorDetailLevel: 10
+
+  # Show build timer within Xcode UI.
+  ShowBuildOperationDuration: true
+
+  # Xcode > Preferences > Fonts & Colors > Theme > San Jose Slides.
+  XCFontAndColorCurrentDarkTheme: "San Jose Slides.xccolortheme"
+
+
+com.flexibits.fantastical.plist:
+  # Use monochrome Fantastical menu icon.
+  StatusItemStyle: 0
+
+org.gnu.Emacs:
+  # Enable natural title bar patch for Emacs.
+  TransparentTitleBar: DARK

@@ -15,5 +15,7 @@ rustup completions fish > "$COMPLETIONS_DIR/rustup.fish"
 rustup component add rust-src
 
 set +o errexit
+rustup default stable
 cargo install racer --force
 cargo install rustfmt --force
+cargo install tealdeer --force
