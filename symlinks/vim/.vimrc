@@ -17,6 +17,7 @@ Plugin 'garbas/vim-snipmate'
 Plugin 'gmarik/Vundle.vim'
 Plugin 'hecal3/vim-leader-guide'
 Plugin 'honza/vim-snippets'
+Plugin 'jerrymarino/SwiftPlayground.vim'
 Plugin 'jimmay5469/vim-spacemacs'
 Plugin 'jnurmine/Zenburn'
 Plugin 'junegunn/fzf.vim'
@@ -38,7 +39,7 @@ Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'vim-syntastic/syntastic'
 
-let g:ctrlp_map = ''
+let g:ctrlp_map = '<leader>fp'
 let g:rust_recommended_style = 1
 
 call vundle#end()
@@ -66,6 +67,7 @@ set undofile
 set hidden
 
 " Display
+set cursorline
 set rulerformat=%l:%c
 set shortmess=atI
 set showcmd
@@ -115,7 +117,7 @@ if !&diff
     syntax on
 endif
 
-highlight Normal ctermbg=black guibg=#1f1f1f
+highlight Normal ctermbg=black guibg=#1a1d1e
 
 " ==============================
 " Macros
@@ -212,6 +214,7 @@ noremap <c-e> <end>
 noremap + <c-a>
 noremap - <c-x>
 cnoremap <c-k> <c-\>estrpart(getcmdline(), 0, getcmdpos()-1)<cr>
+cnoremap <c-g> <c-c>
 
 " Emacs bindings in insert mode
 inoremap <c-/> <c-o>u
@@ -225,6 +228,7 @@ let g:spacemacs#excludes = [
   \ '^ff',
 \ ]
 nnoremap <leader>ff :lcd %:p:h<cr>:e<space>
+nnoremap <leader><leader> :
 
 " Terminal registers <c-/> as <c-_> https://stackoverflow.com/a/9051932
 imap <c-_> <c-/>
