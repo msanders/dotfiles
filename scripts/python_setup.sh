@@ -9,7 +9,7 @@ pyenv install 3.7.3 --skip-existing
 
 install_dependencies() {
     pip install -U pip setuptools flake8 setuptools-rust autoflake hy yapf \
-                   virtualenv
+                   virtualenv pylint
 }
 
 pyenv shell 2.7.16

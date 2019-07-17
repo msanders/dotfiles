@@ -18,8 +18,8 @@
 
 (defun michaelsanders-swift/init-swift-playground-mode ()
   (use-package swift-playground-mode :defer t :init
-    (autoload 'swift-playground-toggle-if-needed "swift-playground-mode" nil t)
-    (add-hook 'swift-mode-hook #'swift-playground-toggle-if-needed)))
+    (autoload 'swift-playground-global-mode "swift-playground-mode" nil t)
+    (add-hook 'swift-mode-hook #'swift-playground-global-mode)))
 
 (defun michaelsanders-swift/post-flycheck-swiftlint ()
   (with-eval-after-load 'flycheck (flycheck-swiftlint-setup)))

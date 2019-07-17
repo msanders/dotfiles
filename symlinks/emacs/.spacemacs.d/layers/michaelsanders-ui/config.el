@@ -81,7 +81,7 @@
 ;; Add support for font ligatures.
 ;; See https://github.com/tonsky/FiraCode/wiki/Emacs-instructions
 (when (window-system)
-  (if (memq (window-system) '(mac ns))
+  (if (eq (window-system) 'mac)
       (mac-auto-operator-composition-mode)
     (let ((alist '((33 . ".\\(?:\\(?:==\\|!!\\)\\|[!=]\\)")
                    (35 . ".\\(?:###\\|##\\|_(\\|[#(?[_{]\\)")

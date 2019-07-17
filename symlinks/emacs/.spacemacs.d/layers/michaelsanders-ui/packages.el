@@ -9,8 +9,10 @@
     all-the-icons
     editorconfig
     helm
+    helpful
     nov
     nyan-mode
+    which-func
     writeroom-mode
     yasnippet-snippets
    ))
@@ -21,9 +23,16 @@
 (defun michaelsanders-ui/init-editorconfig ()
   (use-package editorconfig :ensure t :defer t))
 
+(defun michaelsanders-ui/init-helpful ()
+  (use-package helpful :ensure t :defer t))
+
 (defun michaelsanders-ui/init-nov ()
   (use-package nov :ensure t :defer t :config
     (setq nov-text-width 80)))
+
+(defun michaelsanders-ui/init-which-func ()
+  (use-package which-func :ensure t :config
+    (which-func-mode t)))
 
 (defun michaelsanders-ui/init-nyan-mode ()
   (use-package nyan-mode :ensure t :defer t))
@@ -41,6 +50,14 @@
     (eval-after-load 'yasnippet #'yasnippet-snippets-initialize)))
 
 (defun michaelsanders-ui/post-init-helm ()
+  (add-hook 'ido-setup-hook
+            (lambda ()
+              (dolist (mapping (list ido-file-dir-completion-map
+                                     ido-file-completion-map))
+                (define-key mapping
+                  (kbd "C-w")
+                  #'ido-delete-backward-word-updir))))
+
   (with-eval-after-load 'helm
     (ido-mode 1)
     (helm-mode 1)
