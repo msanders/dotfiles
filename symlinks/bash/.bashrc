@@ -3,6 +3,12 @@ if [ -z "$PS1" ]; then
     return;
 fi
 
+# Load aliases.
+if [ -f "$HOME/.aliases" ]; then
+    # shellcheck source=/dev/null
+    source "$HOME/.aliases"
+fi
+
 export PS1='\u:\W$ '
 
 # Colors
@@ -20,4 +26,3 @@ export HISTSIZE=1000
 # Make bash check its window size after a process completes
 shopt -s checkwinsize
 shopt -s histappend
-

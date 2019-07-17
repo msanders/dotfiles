@@ -1,4 +1,4 @@
-export EDITOR="emacsclient --alternate-editor=vim"
+export EDITOR="em"
 export PATH="$HOME/bin:$PATH"
 
 # Cabal

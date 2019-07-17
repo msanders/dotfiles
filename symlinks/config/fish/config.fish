@@ -78,4 +78,8 @@ function notify
     terminal-notifier -title "✅ Done" -message $message -timeout 5
 end
 
+function md
+    mkdir -p $argv && cd $argv
+end
+
 fish_hybrid_key_bindings
