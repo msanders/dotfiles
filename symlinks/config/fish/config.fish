@@ -7,6 +7,7 @@ set --export LC_ALL en_US.UTF-8
 set --export LSCOLORS cxfxexexexegedabagcxcx
 set --export PATH "$HOME/bin" "$HOME/.local/bin" "/usr/local/bin" $PATH
 set --export fish_greeting
+set --export theme_color_scheme zenburn
 set __fish_git_prompt_show_informative_status 'yes'
 
 if test -f $HOME/.aliases
