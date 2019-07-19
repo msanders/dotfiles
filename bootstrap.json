@@ -9,7 +9,7 @@
         "./scripts/python_setup.sh",
         "./scripts/ruby_setup.sh",
         "./scripts/rust_setup.sh",
-        "./scripts/system_setup.sh",
+        "./scripts/macos_setup.sh",
         "./scripts/vim_setup.sh",
         "./scripts/xcode_setup.sh",
         "./scripts/ycmd_setup.sh"
@@ -67,8 +67,8 @@
         "rbenv",
         "ripgrep",
         "sd",
+        "tealdeer",
         "tig",
-        "tldr",
         "tmux",
         "wget",
         "yuicompressor",
@@ -88,7 +88,7 @@
         "sh/.*": "~",
         "vim/.*": "~",
         "xvim/.*": "~",
-        "zsh/.zsh-functions/*": "~/.zsh-functions/",
+        "zsh-functions/*": "~/.zsh/zsh-functions/",
         "zsh/.zshrc": "~"
     },
     "taps": [

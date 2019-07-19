@@ -9,11 +9,11 @@ if [ ! -d "$EMACS_DIR" ]; then
     echo "Installed Spacemacs."
 fi
 
-if ! command -v cask >/dev/null; then
+if [ ! -d "$HOME/.cask" ]; then
     curl -fsSL https://raw.githubusercontent.com/cask/cask/master/go | python
 fi
 
-if [ ! -e "/Applications/Emacs" ] && [ ! -e "/Applications/Emacs.app" ]; then
+if [ "$(uname -s)" == "Darwin" ] && [ ! -e "/Applications/Emacs" ] && [ ! -e "/Applications/Emacs.app" ]; then
     osascript -e 'tell application "Finder"' \
               -e "make alias file to POSIX file \"$EMACS_APP_PATH\" at POSIX file \"/Applications\"" \
               -e 'end tell' >/dev/null

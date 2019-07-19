@@ -2,7 +2,12 @@
 eval "$(pyenv init -)"
 set -o errexit -o pipefail
 
-export PYTHON_CONFIGURE_OPTS="--enable-framework"
+if [ "$(uname -s)" == "Darwin" ]; then
+    export PYTHON_CONFIGURE_OPTS="--enable-framework"
+else
+    export PYTHON_CONFIGURE_OPTS="--enable-shared"
+fi
+
 pyenv install 2.7.16 --skip-existing
 pyenv install 3.6.8 --skip-existing
 pyenv install 3.7.3 --skip-existing

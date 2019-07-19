@@ -18,4 +18,3 @@ set +o errexit
 rustup default stable
 cargo install racer --force
 cargo install rustfmt --force
-cargo install tealdeer --force

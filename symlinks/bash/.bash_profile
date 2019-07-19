@@ -45,3 +45,8 @@ if command -v rustc; then
 fi
 
 export GTAGSLABEL=pygments
+
+# Added by Nix installer
+if [ -e /home/mks/.nix-profile/etc/profile.d/nix.sh ]; then
+    . /home/mks/.nix-profile/etc/profile.d/nix.sh;
+fi

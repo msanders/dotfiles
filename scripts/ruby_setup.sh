@@ -14,4 +14,8 @@ echo "Updating Ruby"
 rbenv install 2.5.5 --skip-existing
 rbenv global 2.5.5
 gem update --system
-gem install pry rubocop terminal-notifier
+gem install pry rubocop
+
+if [ "$(uname -s)" == "Darwin" ]; then
+    gem terminal-notifier
+fi
