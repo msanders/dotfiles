@@ -38,7 +38,10 @@ if [ -d "$POSTGRES_DOT_APP" ]; then
     export PATH=$PATH:"$POSTGRES_DOT_APP/Contents/Versions/9.3/bin"
 fi
 
-export PATH="$HOME/.cargo/bin:$PATH"
-export RUST_SRC_PATH
-RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
+if command -v rustc; then
+    export PATH="$HOME/.cargo/bin:$PATH"
+    export RUST_SRC_PATH
+    RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
+fi
+
 export GTAGSLABEL=pygments
