@@ -11,8 +11,8 @@ else
 fi
 
 echo "Updating Ruby"
-rbenv install 2.5.5 --skip-existing
-rbenv global 2.5.5
+rbenv install 2.6.5 --skip-existing
+rbenv global 2.6.5
 gem update --system
 gem install pry rubocop
 
