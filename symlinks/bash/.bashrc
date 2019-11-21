@@ -9,13 +9,15 @@ if [ -f "$HOME/.aliases" ]; then
     source "$HOME/.aliases"
 fi
 
-export PS1='\u:\W$ '
+export PS1='\u:\W $ '
 
-# Colors
-export CLICOLOR=1
+# Encoding
 export LANG=en_US.UTF-8
 export LANGUAGE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
+
+# Colors
+export CLICOLOR=1
 export GREP_OPTIONS='--color=auto'
 export LSCOLORS=cxfxexexexegedabagcxcx
 
@@ -23,6 +25,5 @@ export LSCOLORS=cxfxexexexegedabagcxcx
 export HISTCONTROL=erasedups,ignorespace
 export HISTSIZE=1000
 
-# Make bash check its window size after a process completes
-shopt -s checkwinsize
+# Append to history on shell exit rather than overwrite.
 shopt -s histappend

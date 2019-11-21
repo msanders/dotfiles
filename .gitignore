@@ -1,4 +1,5 @@
 symlinks/config/fish/fish_variables
+symlinks/config/fish/completions
 symlinks/emacs/.spacemacs.d/backups
 symlinks/emacs/.spacemacs.d/secrets.el
 scripts/Grayscale/toggle-grayscale

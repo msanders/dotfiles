@@ -5,7 +5,7 @@ set --export GREP_OPTIONS "--color=auto"
 set --export LANG C
 set --export LC_ALL en_US.UTF-8
 set --export LSCOLORS cxfxexexexegedabagcxcx
-set --export PATH "$HOME/bin" "$HOME/.local/bin" "/usr/local/bin" $PATH
+set --export PATH "$HOME/bin" "$HOME/.local/bin" "/usr/local/bin" "/usr/local/sbin" $PATH
 set --export fish_greeting
 set --export theme_color_scheme zenburn
 set __fish_git_prompt_show_informative_status 'yes'
@@ -56,13 +56,7 @@ end
 
 if which rustc > /dev/null
     set --export DYLD_LIBRARY_PATH (rustc --print sysroot)/lib $DYLD_LIBRARY_PATH
-end
-
-# Add GHC.app to the PATH, via http://ghcformacosx.github.io/
-set --export GHC_DOT_APP "/opt/homebrew-cask/Caskroom/ghc/7.10.2-r0/ghc-7.10.2.app"
-if test -d "$GHC_DOT_APP"
-    set --export PATH $PATH "$HOME/.cabal/bin" "$GHC_DOT_APP/Contents/bin"
-    set --export PATH "$HOME/.local/bin" $PATH
+	set --export RUST_SRC_PATH (rustc --print sysroot)/lib/rustlib/src/rust/src
 end
 
 # Add Postgres.app to PATH
@@ -70,8 +64,6 @@ set --export POSTGRES_DOT_APP "/Applications/Postgres.app"
 if test -d "$POSTGRES_DOT_APP"
     set --export PATH "/Applications/Postgres.app/Contents/Versions/latest/bin" $PATH
 end
-
-set --export RUST_SRC_PATH (rustc --print sysroot)/lib/rustlib/src/rust/src
 
 function notify
     if [ $argv ]; set message $argv; else; set message "Done running task"; end

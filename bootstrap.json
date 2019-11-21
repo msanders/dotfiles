@@ -4,6 +4,7 @@
         "./scripts/KeyBindings/install",
         "./scripts/Launchterm/install",
         "./scripts/emacs_setup.sh",
+        "./scripts/fish_setup.fish",
         "./scripts/haskell_setup.sh",
         "./scripts/node_setup.sh",
         "./scripts/python_setup.sh",
