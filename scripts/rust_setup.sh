@@ -10,11 +10,11 @@ COMPLETIONS_DIR="$HOME/.config/fish/completions"
 
 set -x
 mkdir -p "$COMPLETIONS_DIR"
+rustup default stable
 rustup update
 rustup completions fish > "$COMPLETIONS_DIR/rustup.fish"
 rustup component add rust-src
+rustup component add rustfmt
 
 set +o errexit
-rustup default stable
-cargo install racer --force
-cargo install rustfmt --force
+cargo +nightly install racer --force
