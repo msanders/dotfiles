@@ -21,6 +21,7 @@
 (setq display-time-24hr-format t)
 (setq font-lock-maximum-decoration t)
 (setq trash-directory "~/.Trash")
+(setq find-function-C-source-directory "~/src/etc/emacs/src")
 (display-time-mode)
 
 ;; Workaround for https://github.com/syl20bnr/spacemacs/issues/5435.
@@ -72,7 +73,7 @@
           (lambda () (setq-local helm-dash-docsets '("Swift"))))
 
 ;; emacs-mac config
-(when (memq (window-system) '(mac ns))
+(when (spacemacs/system-is-mac)
   (setq default-frame-alist '(
                               (ns-transparent-titlebar . t)
                               (ns-appearance . dark)
@@ -81,7 +82,7 @@
 ;; Add support for font ligatures.
 ;; See https://github.com/tonsky/FiraCode/wiki/Emacs-instructions
 (when (window-system)
-  (if (eq (window-system) 'mac)
+  (if (spacemacs/system-is-mac)
       (mac-auto-operator-composition-mode)
     (let ((alist '((33 . ".\\(?:\\(?:==\\|!!\\)\\|[!=]\\)")
                    (35 . ".\\(?:###\\|##\\|_(\\|[#(?[_{]\\)")

@@ -353,7 +353,9 @@ This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
   (when (display-graphic-p) (load-theme 'doom-Iosvkem t))
-  (load (expand-file-name "secrets.el" dotspacemacs-directory))
+  (load (expand-file-name "secrets.el" dotspacemacs-directory)
+        'no-error
+        'no-message)
   (global-git-commit-mode t)
   (editorconfig-mode t)
   (nyan-mode t)
