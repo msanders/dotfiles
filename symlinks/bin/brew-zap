@@ -1,9 +1,0 @@
-#!/usr/bin/env bash
-set -o errexit -o pipefail -o nounset
-
-kegs=$(join <(brew leaves) <(brew deps "$1"))
-if [ -n "$kegs" ]; then
-	brew rm "$kegs"
-fi
-
-brew rm "$1"

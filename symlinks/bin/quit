@@ -1,6 +1,0 @@
-#!/usr/bin/env bash
-set -o errexit -o pipefail -o nounset
-
-for var in "$@"; do
-    osascript -e "tell application \"$var\" to quit"
-done

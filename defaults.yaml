@@ -1,4 +1,14 @@
+# In general, I prefer to keep things as close to the defaults as possible, but
+# these are some exceptions (most of which just make development easier).
+
 NSGlobalDomain:
+  # System Preferences > Keyboard > Shortcuts > Full Keyboard Access > All
+  # controls.
+  AppleKeyboardUIMode: 3
+
+  # System Preferences > General > Sidebar icon size > Large.
+  NSTableViewDefaultSizeMode: 3
+
   # Disable press and hold character picker.
   ApplePressAndHoldEnabled: false
 
@@ -11,38 +21,19 @@ NSGlobalDomain:
   # Disable smooth scrolling
   NSScrollAnimationEnabled: false
 
-  # Delay to show menu bar in full screen.
-  NSToolbarFullScreenAnimationDuration: 0.05
-
-com.apple.Safari:
-  # Use substring search by default in Safari.
-  FindOnPageMatchesWordStartsOnly: false
-
 com.apple.desktopservices:
   # Disable .DS_Store files on network drives.
   DSDontWriteNetworkStores: true
+
+  # Disable .DS_Store files on external drives.
+  DSDontWriteUSBStores: true
 
 com.apple.dock:
   # System Preferences > Dock > Automatically hide and show the Dock.
   autohide: true
 
-  # Delay when showing the dock.
-  expose-animation-duration: 0.05
-
-  # System Preferences > Dock > Position on screen.
-  orientation: left
-
   # System Preferences > Dock > Show indicators for open applications.
   show-process-indicators: false
-
-  # System Preferences > Dock > Show recent applications in Dock.
-  show-recents: false
-
-  # System Preferences > Dock > Size.
-  tilesize: 72
-
-  # System Preferences > Dock > Minimize windows using: Scale effect.
-  mineffect: "scale"
 
 com.apple.finder:
   # Finder > View > Show view options > Sort Group By > Name.
@@ -58,11 +49,29 @@ com.apple.finder:
   # Finder > View > As List.
   FXPreferredViewStyle: Nlsv
 
-  # Finder > Preferences > Show these items on the desktop > Hard disks.
-  ShowHardDrivesOnDesktop: false
+  # Finder > Preferences > New Finder windows show > Home directory.
+  NewWindowTarget: PfHm
+
+  # Finder > Preferences > New Finder windows show > Home directory.
+  NewWindowTargetPath: "file://${HOME}"
 
   # Enable "Quit Finder" menu item.
   QuitMenuItem: true
+
+  # Finder > Preferences > Show these items on the desktop > Hard disks.
+  ShowHardDrivesOnDesktop: false
+
+  # Finder > View > Show Path Bar.
+  ShowPathbar: true
+
+com.apple.iTunes:
+  # iTunes > Preferences > Devices > Prevent iPods, iPhones, and iPads from
+  # syncing automatically.
+  dontAutomaticallySyncIPods: true
+
+com.apple.Safari:
+  # Use substring search by default in Safari.
+  FindOnPageMatchesWordStartsOnly: false
 
 com.apple.dt.Xcode:
   # Xcode > Preferences > Text Editing > Page guide at column.
@@ -88,10 +97,38 @@ com.apple.dt.Xcode:
   # Xcode > Preferences > Fonts & Colors > Theme > San Jose Slides.
   XCFontAndColorCurrentDarkTheme: "San Jose Slides.xccolortheme"
 
+com.apple.TextEdit:
+  # TextEdit > Preferences > New Document > Plain text.
+  RichText: false
 
-com.flexibits.fantastical.plist:
-  # Use monochrome Fantastical menu icon.
-  StatusItemStyle: 0
+com.apple.SoftwareUpdate:
+  # System Preferences > Software Update > Advanced... > Automatically check for
+  # updates.
+  AutomaticCheckEnabled: true
+
+  # System Preferences > Software Update > Advanced... > Download new updates
+  # when available.
+  AutomaticDownload: true
+
+com.flexibits.fantastical2.mac:
+  # Fantastical 2 > Preferences > Appearance > Hide Fantastical in Dock.
+  HideDockIcon: true
+
+  # Fantastical 2 > Preferences > General > Record Shortcut > None.
+  HotKeyEmpty: true
+
+  # Fantastical 2 > Preferences > Appearance > Text size > Large.
+  ListTextSize: 1
+
+  # Fantastical 2 > Preferences > Advanced > Open maps in: Google Maps.
+  OpenMapsIn: google
+
+  # Fantastical 2 > Preferences > Appearance > Menu bar icon shows: Nothing.
+  StatusItemBadge: StatusItemStyleNone
+
+com.kapeli.dashdoc:
+  # Dash > Preferences > General > Behavior > Show dock icon > Off.
+  showInDock: false
 
 org.gnu.Emacs:
   # Enable natural title bar patch for Emacs.

@@ -1,0 +1,12 @@
+#!/bin/sh
+set -o errexit -o nounset
+
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+readonly OUTDIR="$HOME/Library/KeyBindings"
+readonly SCRIPT_DIR
+
+# Apparently DefaultKeyBinding.dict can't be symlinked.
+# See https://apple.stackexchange.com/a/53110
+mkdir -p "$OUTDIR"
+cp -p "$SCRIPT_DIR/DefaultKeyBinding.dict" "$OUTDIR"
+echo "Installed Key Bindings."

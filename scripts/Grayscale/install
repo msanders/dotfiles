@@ -1,9 +1,0 @@
-#!/usr/bin/env bash
-set -o errexit -o pipefail -o nounset
-
-DIRNAME=$(dirname "$0")
-
-rm -f ./toggle-grayscale
-clang -g -Os -std=c11 -Wall -framework ApplicationServices "$DIRNAME/toggle-grayscale.c" -o "$DIRNAME/toggle-grayscale"
-cp -p "$DIRNAME/toggle-grayscale" "$HOME/bin"
-echo "Installed toggle-grayscale."

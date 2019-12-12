@@ -1,14 +1,17 @@
 ## Installation
 
-On macOS, run this:
+Run this:
 
 ```sh
-pip install -U cider
-git clone --recursive https://github.com/msanders/dotfiles ~/.cider
-cider restore
+$ git clone --recursive https://github.com/msanders/dotfiles ~/.dotfiles
+$ sudo --validate # Request sudo privileges upfront for before & after scripts.
+$ ~/.dotfiles/zero/setup
 ```
 
-This will symlink the appropriate files to your home directory. Everything is
-configured and tweaked within `~/.cider`.
+This will run the appropriate installers and symlink the contained files to your
+home directory. Everything is configured and tweaked within `~/.dotfiles`.
 
-On Linux, after cloning instead run `scripts/linux_setup.sh`.
+For a full list of steps done on new machines, see [CHECKLIST.md](./CHECKLIST.md).
+
+This repo uses [zero.sh](https://github.com/zero-sh/zero.sh) for system setup
+and configuration.

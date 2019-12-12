@@ -1,0 +1,27 @@
+#!/bin/sh
+set -o errexit -o nounset
+
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+USER="$(whoami)"
+
+readonly SCRIPT_DIR USER
+readonly TARGET="Launchterm"
+readonly DOMAIN="com.msanders.Launchterm"
+readonly SUPPORT_DIR="$HOME/Library/Application Support/$TARGET"
+readonly AGENT_DIR="$HOME/Library/LaunchAgents"
+readonly PLIST="$AGENT_DIR/$DOMAIN.plist"
+
+mkdir -p "$SUPPORT_DIR"
+mkdir -p "$AGENT_DIR"
+
+swiftc "$SCRIPT_DIR/Launchterm.swift" -o "$SUPPORT_DIR/$TARGET" -O \
+                                   -whole-module-optimization
+
+sed -e "s/{USER}/$USER/" "$SCRIPT_DIR/$DOMAIN.template.plist" > "$PLIST"
+
+if launchctl list | grep -Fq "$DOMAIN"; then
+    launchctl unload "$PLIST"
+fi
+
+launchctl load "$PLIST"
+echo "Installed $TARGET."

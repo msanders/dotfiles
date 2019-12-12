@@ -1,6 +1,6 @@
-symlinks/config/fish/fish_variables
-symlinks/config/fish/completions
+symlinks/fish/.config/fish/fish_variables
+symlinks/fish/.config/fish/completions
 symlinks/emacs/.spacemacs.d/backups
 symlinks/emacs/.spacemacs.d/secrets.el
-scripts/Grayscale/toggle-grayscale
-scripts/Grayscale/toggle-grayscale.dSYM
+run/lib/Grayscale/toggle-grayscale
+run/lib/Grayscale/toggle-grayscale.dSYM
