@@ -4,7 +4,6 @@ Run this:
 
 ```sh
 $ git clone --recursive https://github.com/msanders/dotfiles ~/.dotfiles
-$ sudo --validate # Request sudo privileges upfront for before & after scripts.
 $ ~/.dotfiles/zero/setup
 ```
 
