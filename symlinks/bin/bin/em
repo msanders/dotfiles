@@ -1,8 +1,14 @@
 #!/bin/sh
+#
+# This is a convenience wrapper to launch or reuse an Emacs instance to open a
+# given file. It returns immediately, so can't be used as an $EDITOR.
+set -o errexit -o nounset
 
-if [ ${#} -lt 1 ]; then
-    echo 1>&2 "Usage: $(basename "$0") [file]"
-    exit 1
+if ! pgrep -q -- "Emacs"; then
+    open -a Emacs "$@"
+    echo "Waiting for Emacs to start..."
+elif [ $# -eq 0 ]; then
+    open -a Emacs
+else
+    emacsclient --no-wait "$@"
 fi
-
-emacsclient --alternate-editor=vim --quiet 2>/dev/null "$@"
